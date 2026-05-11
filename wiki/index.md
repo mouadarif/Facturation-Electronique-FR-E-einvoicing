@@ -32,6 +32,14 @@ This index is the content-oriented map of the persistent wiki. Read it before an
 | --- | --- |
 | [Cas 1 - Multi-commande / multi-livraison](cas_applicables/cas_01_multi_commande_multi_livraison.md) | Detailed explanation of app case 1, including concrete examples for `S1`, `S2`, `BT-8`, TVA at encashment and option for debits. |
 | [Cas 2 - Facture deja payee](cas_applicables/cas_02_facture_deja_payee.md) | Detailed explanation of app case 2, including the difference between an advance payment invoice and an order paid at order time. |
+| [Cas 3 - Tiers payeur connu](cas_applicables/cas_03_tiers_payeur_connu.md) | Clarifies the “third-party payer” pattern and its differences vs already-paid and partial coverage cases. |
+| [Cas 4 - Prise en charge partielle](cas_applicables/cas_04_prise_en_charge_partielle.md) | Partial third-party coverage (franchise/TVA nuance) and multi-encashment implications. |
+| [Cas 5 - Frais collaborateur (facture entreprise)](cas_applicables/cas_05_frais_collaborateur_facture_entreprise.md) | Expense advance where invoice is addressed to the company (B2B e-invoicing). |
+| [Cas 6 - Frais collaborateur (sans facture entreprise)](cas_applicables/cas_06_frais_collaborateur_sans_facture_entreprise.md) | Expense advance with ticket/invoice addressed to the employee (B2C e-reporting). |
+| [Cas 7 - Carte logée](cas_applicables/cas_07_carte_logee.md) | Lodged card flow as a practical variant of “already paid invoice”. |
+| [Cas 8 à 10 - Paiement à un tiers (affacturage)](cas_applicables/cas_08_09_10_paiement_tiers_affacturage.md) | Distinguishes cases 8/9/10: beneficiary known at issuance vs unknown later (subrogation/cession). |
+| [Cas 11 - Facture traitée par un tiers](cas_applicables/cas_09_facture_traitee_par_tiers.md) | Third-party processing on behalf of the buyer (delegations, statuses). |
+| [Cas 12 - Intermédiaire transparent (acheteur)](cas_applicables/cas_10_intermediaire_transparent_acheteur.md) | Transparent intermediary managing buyer invoices via dedicated address and platform. |
 
 ## Technical synthesis
 

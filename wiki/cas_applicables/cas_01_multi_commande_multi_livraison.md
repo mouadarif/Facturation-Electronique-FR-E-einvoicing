@@ -1,17 +1,23 @@
 # Cas 1 - Multi-commande / multi-livraison
 
 Status: current
-Last updated: 2026-05-10
+Last updated: 2026-05-11
 
-## Resume
+## Résumé
 
-Le cas 1 couvre une facture qui regroupe plusieurs commandes, plusieurs livraisons, ou les deux. Le sujet principal est la capacite du systeme de facturation a conserver les references utiles au bon niveau : soit au niveau de la facture, soit au niveau de chaque ligne.
+Le cas 1 couvre une facture qui regroupe **plusieurs commandes**, **plusieurs livraisons**, ou les deux. Le point clé est de **conserver la traçabilité au bon niveau** (facture ou ligne) et de savoir **utiliser les extensions** quand EN16931 ne suffit pas.
 
 Dans l'application, ce cas sert de point d'entree pour les factures B2B domestiques simples qui deviennent plus complexes parce qu'elles agregent plusieurs operations commerciales.
 
-## Notion metier
+## Contexte & périmètre
 
-Une entreprise peut emettre une seule facture pour plusieurs commandes ou plusieurs bons de livraison. Ce regroupement est acceptable si la facture reste exploitable par l'acheteur, la PDP et l'administration : les lignes doivent permettre de comprendre quelle commande ou livraison est concernee.
+- **Quand**: facturation périodique, regroupement de livraisons, facturation multi-sites, etc.
+- **Pourquoi c’est difficile**: une facture “regroupée” peut casser le rapprochement acheteur si les références commande/livraison ne sont pas portées correctement.
+- **Ce que dit l’Annexe A**: la **norme EN16931 seule** ne couvre pas le multi-commande / multi-livraison ; il faut s’appuyer sur le profil **EXTENDED-CTC-FR** pour porter certaines références **au niveau ligne**.
+
+## Notion métier
+
+Une entreprise peut émettre une facture unique pour plusieurs commandes ou plusieurs livraisons. Ce regroupement est acceptable si la facture reste exploitable par l’acheteur : **chaque ligne** doit permettre de comprendre **quelle commande / livraison** elle concerne.
 
 Le risque metier est de perdre la tracabilite entre :
 
@@ -30,13 +36,25 @@ Le risque metier est de perdre la tracabilite entre :
 | Cadre de facturation `BT-23` | Indique le mode de facturation : bien, service, facture deja payee, etc. |
 | Code d'exigibilite TVA `BT-8` | Indique l'evenement d'exigibilite de la TVA lorsque necessaire. |
 
-## Exemples concrets
+## Nuances importantes (avec autres cas)
+
+### Nuance vs **Cas 31** (facture mixte “principal/accessoire”)
+
+- **Cas 1**: le sujet est la **traçabilité commande/livraison** quand on regroupe.
+- **Cas 31**: le sujet est la **qualification** d’une opération principale et d’une opération accessoire (TVA/régime), même si la facture a une seule commande.
+
+### Nuance vs **Cas 2** (facture déjà payée)
+
+- **Cas 1** n’implique pas un paiement déjà intervenu.
+- Si le regroupement est aussi **déjà payé** (ex: abonnement payé d’avance), on retombe sur des contraintes du **Cas 2** (montant à payer, encaissement/statuts si TVA à l’encaissement).
+
+## Exemples concrets (focalisés sur la nuance)
 
 ### Exemple 1 : plusieurs commandes sur une facture de biens
 
 Un client passe trois commandes dans le mois. Le vendeur livre les marchandises puis emet une seule facture mensuelle.
 
-Dans ce cas, chaque ligne de facture doit idealement garder la reference de la commande ou de la livraison correspondante. La TVA sur les livraisons de biens est en general traitee au moment prevu par les regles de livraison/facturation, sans suivi d'encaissement comparable aux prestations de services a l'encaissement.
+Dans ce cas, **la nuance Cas 1 vs Cas 31** est simple : ici, on ne cherche pas à requalifier une opération principale/accessoire ; on cherche à **ne pas perdre le lien** ligne ↔ commande/livraison. Chaque ligne doit porter la bonne référence de commande/livraison quand elles diffèrent.
 
 ### Exemple 2 : facture de service avec TVA exigible a l'encaissement
 
@@ -96,7 +114,7 @@ La bonne lecture du cas consiste donc a distinguer le regroupement commercial de
 - `src/data/cases.js` : cas applicatif 1, "Multi-commande / multi-livraison".
 - `juridique/02_DEFINITIONS_NOTIONS_REFORME.md` : definitions "TVA exigible a l'encaissement", "Option pour les debits" et "E-reporting paiement".
 - `juridique/03_NOTIONS_PAR_CAS_REFORME.md` : matrice des notions par cas.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=25` : cas AFNOR multi-commande / multi-livraison.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=39` : Annexe A v1.3, cas n°1 multi-commande / multi-livraison.
 - `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=34` : exemple de facture deja payee et regle liee a `S1`, `S2`, `BT-8` et TVA a l'encaissement.
 - `docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=17` : role de `BT-8` pour l'evenement d'exigibilite de la TVA.
 - `docs_tech/e_reporting_donnees_paiement.pdf#page=1` : donnees de paiement a transmettre lorsque la TVA est exigible a l'encaissement.
@@ -106,3 +124,4 @@ La bonne lecture du cas consiste donc a distinguer le regroupement commercial de
 - [Definitions juridiques des notions](../../juridique/02_DEFINITIONS_NOTIONS_REFORME.md)
 - [Notions par cas de reforme](../../juridique/03_NOTIONS_PAR_CAS_REFORME.md)
 - [Roles des normes AFNOR](../06_normes_afnor.md)
+- [Cas 2 - Facture déjà payée](cas_02_facture_deja_payee.md)

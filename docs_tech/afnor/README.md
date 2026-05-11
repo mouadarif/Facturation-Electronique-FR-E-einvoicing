@@ -10,7 +10,8 @@ Ce dossier contient les documents AFNOR reutilisables pour la reforme de la fact
 | `afnor_xp_z12_012_formats_profils_factures_statuts.pdf` | 59 | Copie issue de l'archive Cegos/COMEXA; doublon fonctionnel de la reference XP Z12-012 deja presente. |
 | `afnor_xp_z12_013_api_plateformes_dematerialisation.pdf` | 19 | API pour interfacer les SI entreprises avec les plateformes de dematerialisation. |
 | `afnor_xp_z12_014_cas_usage_b2b.pdf` | 32 | Cas d'usage B2B applicables a la reforme facture electronique en France. |
-| `afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf` | 108 | Annexe A normative de XP Z12-014, description des principaux cas d'usage B2B specifiques. |
+| `afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf` | 155 | Annexe A normative de XP Z12-014, description des principaux cas d'usage B2B specifiques. |
+| `afnor_xp_z12_014_annexe_b_cas_usage_b2b.pdf` | 23 | Annexe B XP Z12-014 avec exemples et cas d usage annexes. |
 
 ## Utilisation dans l'application
 

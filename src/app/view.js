@@ -440,8 +440,16 @@ function buildCaseModal(selectedCase) {
           </div>
         </div>
         <div class="space-y-6 px-6 py-6">
-          <section><h3 class="mb-2 text-lg font-semibold text-slate-900">Explication technique</h3><p class="text-sm leading-relaxed text-slate-700">${selectedCase.description}</p></section>
-          <section class="rounded-xl border border-indigo-200 bg-indigo-50 p-4"><h3 class="mb-2 text-lg font-semibold text-indigo-900">Exemple concret</h3><p class="text-sm leading-relaxed text-indigo-800">${selectedCase.example}</p></section>
+          <section class="rounded-xl border border-amber-200 bg-amber-50 p-4">
+            <h3 class="mb-2 text-lg font-semibold text-amber-950">Important — source d'autorité</h3>
+            <p class="text-sm leading-relaxed text-amber-900">
+              Les textes <span class="font-semibold">Explication</span>, <span class="font-semibold">Exemple</span> et <span class="font-semibold">Impact ERP</span> sont des
+              <span class="font-semibold">synthèses locales</span> destinées à faciliter la lecture. La référence normative à privilégier est la
+              <span class="font-semibold">fiche AFNOR Annexe A</span> (lien ci-dessous).
+            </p>
+          </section>
+          <section><h3 class="mb-2 text-lg font-semibold text-slate-900">Explication (synthèse)</h3><p class="text-sm leading-relaxed text-slate-700">${selectedCase.description}</p></section>
+          <section class="rounded-xl border border-indigo-200 bg-indigo-50 p-4"><h3 class="mb-2 text-lg font-semibold text-indigo-900">Exemple concret (illustratif)</h3><p class="text-sm leading-relaxed text-indigo-800">${selectedCase.example}</p></section>
           ${renderPrimaryReferenceSection(primaryReference)}
           ${renderAnnexASection(annexAReference)}
           <section>

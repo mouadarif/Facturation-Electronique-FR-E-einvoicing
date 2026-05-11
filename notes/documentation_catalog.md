@@ -61,7 +61,8 @@ This catalog tracks the local documentation pack by path, category, scope, file 
 | `docs_tech/afnor/afnor_xp_z12_012_2025.pdf` | afnor | pdf | 59 | 1625727 | Norme XP Z12-012, formats, profils et statuts de cycle de vie. |
 | `docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf` | afnor | pdf | 59 | 1621726 | Copie AFNOR XP Z12-012 extraite de l archive Cegos/COMEXA; doublon fonctionnel conserve pour tracabilite. |
 | `docs_tech/afnor/afnor_xp_z12_013_api_plateformes_dematerialisation.pdf` | afnor | pdf | 19 | 819670 | Norme XP Z12-013 sur les API entre SI entreprises et plateformes de dematerialisation. |
-| `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf` | afnor | pdf | 108 | 2682103 | Annexe A normative XP Z12-014 decrivant les principaux cas d usage B2B specifiques. |
+| `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf` | afnor | pdf | 155 | 5155249 | Annexe A normative XP Z12-014 decrivant les principaux cas d usage B2B specifiques. |
+| `docs_tech/afnor/afnor_xp_z12_014_annexe_b_cas_usage_b2b.pdf` | afnor | pdf | 23 | 439921 | Annexe B XP Z12-014 avec exemples et cas d usage annexes. |
 | `docs_tech/afnor/afnor_xp_z12_014_cas_usage_b2b.pdf` | afnor | pdf | 32 | 906727 | Norme XP Z12-014 sur les cas d usage B2B de la reforme. |
 
 ## Generic Use-Case Cards
@@ -91,6 +92,8 @@ This catalog tracks the local documentation pack by path, category, scope, file 
 | `wiki/03_sources_officielles_et_liens.md` | wiki | md | - | 2538 | Page wiki locale de synthese et navigation. |
 | `wiki/04_journal_evolutions_et_points_ouverts.md` | wiki | md | - | 1434 | Page wiki locale de synthese et navigation. |
 | `wiki/05_MTJ_MAP.md` | wiki | md | - | 587 | Page wiki locale de synthese et navigation. |
+| `wiki/cas_applicables/cas_01_multi_commande_multi_livraison.md` | wiki_case | md | - | 6643 | Synthese detaillee du cas d'usage 1 : multi-commande et multi-livraison. |
+| `wiki/cas_applicables/cas_02_facture_deja_payee.md` | wiki_case | md | - | 15390 | Synthese detaillee du cas d'usage 2 : facture deja payee vs acompte. |
 
 ## Specific Company / Cegos / COMEXA Content
 

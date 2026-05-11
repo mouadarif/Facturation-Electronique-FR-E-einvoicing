@@ -1,7 +1,7 @@
 # Cas 2 - Facture deja payee
 
 Status: current
-Last updated: 2026-05-10
+Last updated: 2026-05-11
 
 ## Resume
 
@@ -123,6 +123,22 @@ La difference se joue sur une question simple : le paiement couvre-t-il deja l'o
 | Commande payee a la commande | Paiement du prix total de la commande ou de la facture | Facture deja payee possible en `B2`, `S2` ou `M2`; cadre normal `B1`, `S1` ou `M1` possible si les donnees restent coherentes | Pas de facture finale a deduire, sauf correction ou avoir |
 | Acompte | Paiement partiel a valoir sur une livraison ou prestation future | Facture d'acompte, type `386` ou equivalent auto-facture si applicable | Facture definitive apres acompte, cadre `B4`, `S4` ou `M4` |
 
+## Nuances importantes (avec autres cas)
+
+### Nuance vs **Cas 20/21** (facture d’acompte + facture finale)
+
+- **Cas 2**: le paiement **solde déjà** l’opération facturée (montant à payer nul, facture “déjà payée”).
+- **Cas 20/21**: le paiement est une **avance partielle** sur une opération future → il faut **une facture d’acompte** puis **une facture finale** qui déduit l’acompte.
+
+### Nuance vs **Cas 7** (carte logée)
+
+- **Cas 7** est une **variante opérationnelle** du Cas 2: la facture est “déjà payée” car réglée via carte logée (moyen de paiement de l’acheteur), avec des champs de paiement spécifiques.
+
+### Nuance vs **Cas 4** (prise en charge partielle par un tiers)
+
+- **Cas 2**: le paiement couvre **100%** (ou la facture est soldée) au moment de l’émission.
+- **Cas 4**: la facture n’est pas forcément soldée ; on parle d’une **prise en charge partielle** (franchise + TVA, etc.) et d’une gestion d’encaissements multiples.
+
 ## Exemples concrets
 
 ### Exemple 1 : commande B2B payee integralement a la commande
@@ -165,6 +181,13 @@ Un client paie `100 %` de la commande au moment de la commande, mais la livraiso
 
 Le point de qualification n'est pas seulement la date de livraison : il faut regarder si le paiement couvre tout le prix facture ou seulement une avance. Si le client a paye la totalite du prix et que la facture emise correspond a cette totalite, on se rapproche du cas "facture deja payee". Si le paiement ne couvre qu'une partie du prix et qu'une facture finale doit suivre, on bascule dans la logique d'acompte.
 
+### Exemple 5 : nuance Cas 2 vs Cas 20/21 (même contexte, sens différent)
+
+Deux scénarios “se ressemblent” en surface (argent reçu avant livraison), mais ne sont pas le même cas :
+
+- **Scénario Cas 2**: le client paie `100%` d’une commande de `600 EUR TTC`. La facture émise correspond au total déjà payé → pas de facture d’acompte, pas de facture finale à déduire.
+- **Scénario Cas 20/21**: le client verse `30%` (`180 EUR TTC`) au lancement d’une prestation de `600 EUR TTC` et le solde sera facturé plus tard → **facture d’acompte** puis **facture finale**.
+
 ## Regle de decision rapide
 
 | Question | Si oui | Si non |
@@ -198,7 +221,7 @@ Le point de qualification n'est pas seulement la date de livraison : il faut reg
 - `src/data/cases.js` : cas applicatif 2, "Facture deja payee par l'acheteur ou un tiers payeur au moment de l'emission".
 - `juridique/02_DEFINITIONS_NOTIONS_REFORME.md` : definition de l'acompte.
 - `src/data/officialAnnexData.js` : cadres `B2`, `S2`, `M2`, `B4`, `S4`, `M4` et types de factures d'acompte.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=25` : cas AFNOR de facture deja payee.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=39` : Annexe A v1.3, cas n°2 facture déjà payée.
 - `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=81` : cas AFNOR facture d'acompte et facture definitive apres acompte.
 - `docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=31` : regles liees a la date d'echeance et aux factures deja payees / acomptes.
 

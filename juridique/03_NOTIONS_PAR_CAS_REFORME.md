@@ -73,7 +73,7 @@ Ce catalogue sert à retrouver les notions métier prévues par l'Annexe A, mêm
 | 2.5 | Litige suivi d'un avoir | 17 | Cas 6, 23 |
 | 2.6 | Litige suivi d'une facture rectificative | 20 | À détailler si besoin |
 | Cas 1 | Multi-commande / multi-livraison | 25 | Voir `../wiki/cas_applicables/cas_01_multi_commande_multi_livraison.md` |
-| Cas 2 | Facture déjà payée | 25 | Voir `../wiki/cas_applicables/cas_02_facture_deja_payee.md` |
+| Cas 2 | Facture déjà payée | 25 | Cas 2 |
 | Cas 3 | Facture à payer par un tiers payeur connu | 26 | À détailler si besoin |
 | Cas 4 | Prise en charge partielle par un tiers | 29 | À détailler si besoin |
 | Cas 5 | Frais collaborateur avec facture au nom de l'entreprise | 32 | À détailler si besoin |

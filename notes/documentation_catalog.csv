@@ -29,7 +29,8 @@ docs_tech/afnor/README.md,afnor,generic_normative,md,1447,,Inventaire du dossier
 docs_tech/afnor/afnor_xp_z12_012_2025.pdf,afnor,generic_normative,pdf,1625727,59,"Norme XP Z12-012, formats, profils et statuts de cycle de vie."
 docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf,afnor,generic_normative,pdf,1621726,59,Copie AFNOR XP Z12-012 extraite de l archive Cegos/COMEXA; doublon fonctionnel conserve pour tracabilite.
 docs_tech/afnor/afnor_xp_z12_013_api_plateformes_dematerialisation.pdf,afnor,generic_normative,pdf,819670,19,Norme XP Z12-013 sur les API entre SI entreprises et plateformes de dematerialisation.
-docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf,afnor,generic_normative,pdf,2682103,108,Annexe A normative XP Z12-014 decrivant les principaux cas d usage B2B specifiques.
+docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf,afnor,generic_normative,pdf,5155249,155,Annexe A normative XP Z12-014 decrivant les principaux cas d usage B2B specifiques.
+docs_tech/afnor/afnor_xp_z12_014_annexe_b_cas_usage_b2b.pdf,afnor,generic_normative,pdf,439921,23,Annexe B XP Z12-014 avec exemples et cas d usage annexes.
 docs_tech/afnor/afnor_xp_z12_014_cas_usage_b2b.pdf,afnor,generic_normative,pdf,906727,32,Norme XP Z12-014 sur les cas d usage B2B de la reforme.
 docs_tech/donnees_facture_correspondance_flux.pdf,technical,generic_official,pdf,55460,2,Table de donnees de facture et correspondance flux/BT.
 docs_tech/e_reporting_donnees_paiement.pdf,technical,generic_official,pdf,48039,2,Donnees de paiement a transmettre en e-reporting.
@@ -69,3 +70,5 @@ wiki/02_carte_technique.md,wiki,generic_local_synthesis,md,1719,,Page wiki local
 wiki/03_sources_officielles_et_liens.md,wiki,generic_local_synthesis,md,2538,,Page wiki locale de synthese et navigation.
 wiki/04_journal_evolutions_et_points_ouverts.md,wiki,generic_local_synthesis,md,1434,,Page wiki locale de synthese et navigation.
 wiki/05_MTJ_MAP.md,wiki,generic_local_synthesis,md,587,,Page wiki locale de synthese et navigation.
+wiki/cas_applicables/cas_01_multi_commande_multi_livraison.md,wiki_case,generic_local_synthesis,md,6643,,"Synthese detaillee du cas d'usage 1 : multi-commande et multi-livraison."
+wiki/cas_applicables/cas_02_facture_deja_payee.md,wiki_case,generic_local_synthesis,md,15390,,"Synthese detaillee du cas d'usage 2 : facture deja payee vs acompte."

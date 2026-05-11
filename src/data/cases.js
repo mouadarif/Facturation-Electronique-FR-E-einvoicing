@@ -56,10 +56,11 @@ export const cases = [
     afnorCase: "Cas n°1",
     category: "b2b-dom",
     title: "Multi-commande / multi-livraison",
-    description: "Facture couvrant plusieurs commandes ou plusieurs livraisons, avec références portées au niveau facture ou ligne.",
+    description:
+      "Facture multi-commandes et/ou multi-livraisons : les références (commande, avis d'expédition, adresses de livraison) peuvent devoir être portées au niveau ligne via le profil EXTENDED-CTC-FR (ex. BG-25 et extensions dédiées).",
     example: "Une facture regroupe plusieurs commandes clients et plusieurs adresses de livraison.",
     erp: "Autoriser les références de commande/livraison à la ligne et contrôler leur export dans le profil étendu.",
-    annexPage: 25
+    annexPage: 39
   }),
   afnorCase({
     id: 2,
@@ -67,11 +68,13 @@ export const cases = [
     category: "statuts",
     type: "Facture déjà payée",
     title: "Facture déjà payée par l'acheteur ou un tiers payeur au moment de l'émission",
-    description: "Facture émise alors que le règlement est déjà intervenu, avec montant à payer nul ou déjà soldé.",
-    example: "Une commande réglée à l'avance donne lieu à une facture transmise après paiement.",
-    format: "Facture avec montant payé et montant restant dû cohérents",
-    erp: "Rapprocher paiement existant, date de paiement et facture émise.",
-    annexPage: 25
+    description:
+      "Facture émise après encaissement total : le montant facturé est déjà réglé et le solde restant dû est nul ou couvert. Il faut distinguer cette situation d'une facture d'acompte, car ici l'opération est soldée et aucune facture définitive ne doit venir déduire un acompte déjà facturé.",
+    example:
+      "Paiement total reçu avant ou au moment de l'émission, puis facture transmise avec montant à payer nul ou cohérent. Attention aux cas de TVA à l'encaissement : la facture doit pouvoir être rattachée au paiement déjà reçu, sans basculer dans la logique d'acompte.",
+    format: "Facture avec `BT-23`/`BT-115` cohérents et montants déjà réglés",
+    erp: "Rapprocher paiement existant, montant restant dû, date d'échéance et type de facture pour ne pas confondre avec un acompte.",
+    annexPage: 39
   }),
   afnorCase({
     id: 3,
@@ -82,7 +85,7 @@ export const cases = [
     description: "Le débiteur économique et le payeur opérationnel sont distincts dès l'émission.",
     example: "Une assurance ou un organisme tiers règle directement la facture au vendeur.",
     erp: "Modéliser le tiers payeur et ne pas confondre acheteur, destinataire et bénéficiaire du paiement.",
-    annexPage: 26
+    annexPage: 41
   }),
   afnorCase({
     id: 4,
@@ -93,7 +96,7 @@ export const cases = [
     description: "Une partie seulement du montant est supportée par un tiers connu au moment de la facturation.",
     example: "Une subvention ou assurance prend en charge une partie du prix facturé.",
     erp: "Séparer la part acheteur, la part tiers et les statuts de paiement associés.",
-    annexPage: 29
+    annexPage: 43
   }),
   afnorCase({
     id: 5,
@@ -101,10 +104,11 @@ export const cases = [
     category: "sectoriel",
     type: "Notes de frais",
     title: "Frais payés par des collaborateurs avec facture au nom de l'entreprise",
-    description: "Le collaborateur avance le paiement, mais la facture est juridiquement adressée à l'entreprise.",
+    description:
+      "Avance de frais par un collaborateur, avec une facture libellée au nom de l'entreprise (donc dans le périmètre e-invoicing). Le collaborateur agit comme tiers payeur ; la facture est reçue sur l'adresse électronique de facturation de l'entreprise (éventuellement dédiée).",
     example: "Un salarié paie un hôtel avec une facture établie au nom de son employeur.",
     erp: "Relier note de frais, justificatif, fournisseur réel et facture B2B.",
-    annexPage: 32
+    annexPage: 46
   }),
   afnorCase({
     id: 6,
@@ -112,11 +116,12 @@ export const cases = [
     category: "b2c",
     type: "Notes de frais",
     title: "Frais payés par des collaborateurs sans facture adressée à l'entreprise",
-    description: "Le collaborateur dispose d'un ticket ou d'une facture à son nom, non adressée à l'entreprise.",
+    description:
+      "Le collaborateur dispose d'un ticket ou d'une facture à son nom : l'opération est B2C (e-reporting côté vendeur), pas une facture B2B adressée à l'entreprise. Une facture B2B peut éventuellement être demandée a posteriori selon les règles prévues.",
     example: "Un salarié transmet un ticket de caisse pour remboursement.",
     format: "Hors facture B2B directe, e-reporting B2C côté vendeur si applicable",
     erp: "Distinguer remboursement interne, justificatif et éventuelle déductibilité TVA.",
-    annexPage: 33
+    annexPage: 47
   }),
   afnorCase({
     id: 7,
@@ -124,10 +129,11 @@ export const cases = [
     category: "statuts",
     type: "Carte logée",
     title: "Facture suite à un achat payé avec carte logée / carte d'achat",
-    description: "Achat déjà payé via une carte ou un dispositif centralisé de paiement.",
+    description:
+      "Achat réglé via une carte logée : la facture est transmise comme déjà payée (logique proche du cas n°2), le paiement étant un moyen de paiement de l'acheteur (sans tiers payeur nommé).",
     example: "Des frais de déplacement sont réglés via une carte logée puis facturés à l'entreprise.",
     erp: "Identifier le moyen de paiement, le relevé carte et la facture correspondante.",
-    annexPage: 33
+    annexPage: 47
   }),
   afnorCase({
     id: 8,
@@ -135,11 +141,13 @@ export const cases = [
     category: "statuts",
     type: "Tiers bénéficiaire / affacturage",
     title: "Factures à payer à un tiers : affacturage, centralisation, dépositaire ou bénéficiaire inconnu",
-    description: "Regroupe les cas où le paiement doit être dirigé vers un tiers déterminé, gestionnaire ou bénéficiaire non connu à l'émission.",
-    example: "Une facture est cédée à un factor ou payée via une centralisation de trésorerie.",
+    description:
+      "Synthèse des cas n°8 à n°10 : paiement à un tiers (bénéficiaire) — soit déterminé dès l'émission (ex. affacturage/centralisation), soit impliquant un tiers qui gère aussi commande/réception, soit avec un bénéficiaire inconnu au moment de l'émission (subrogation/cession après émission).",
+    example:
+      "Affacturage : la facture doit être payée à l'affactureur (ou le bénéficiaire change en cours de vie via statuts), avec traçabilité du bénéficiaire et du compte à payer.",
     format: "Profil étendu si les rôles de tiers doivent être portés dans la facture",
     erp: "Tracer tiers bénéficiaire, changement de compte à payer, subrogation et statuts de cession.",
-    annexPage: 36
+    annexPage: 50
   }),
   afnorCase({
     id: 9,
@@ -150,7 +158,7 @@ export const cases = [
     description: "Un tiers reçoit ou traite la facture à la place de l'acheteur, sans être l'acheteur juridique.",
     example: "Un prestataire comptable reçoit les factures fournisseurs pour le compte d'un client.",
     erp: "Gérer le tiers adressé à, les droits d'accès et le routage.",
-    annexPage: 44
+    annexPage: 59
   }),
   afnorCase({
     id: 10,
@@ -161,7 +169,7 @@ export const cases = [
     description: "Un intermédiaire agit pour le compte de l'acheteur dans la gestion des factures.",
     example: "Une entité centralise la réception et le contrôle de factures pour des sociétés clientes.",
     erp: "Modéliser le commettant, l'intermédiaire et l'adresse de facturation dédiée.",
-    annexPage: 48
+    annexPage: 63
   }),
   afnorCase({
     id: 11,
@@ -172,7 +180,7 @@ export const cases = [
     description: "Facturation impliquant sous-traitant, titulaire et acheteur final avec paiement direct ou délégué.",
     example: "Un sous-traitant est payé directement dans le cadre d'un marché.",
     erp: "Gérer le lien entre facture principale, facture de sous-traitance et tiers payeur.",
-    annexPage: 52
+    annexPage: 67
   }),
   afnorCase({
     id: 12,
@@ -183,7 +191,7 @@ export const cases = [
     description: "Plusieurs entreprises interviennent conjointement dans une opération de facturation.",
     example: "Un groupement de co-traitants facture une prestation à un acheteur B2B.",
     erp: "Tracer mandataire, co-traitants, part de chacun et paiement direct éventuel.",
-    annexPage: 59
+    annexPage: 75
   }),
   afnorCase({
     id: 13,
@@ -194,7 +202,7 @@ export const cases = [
     description: "Un tiers intervient dans la commande ou le paiement pour le compte de l'acheteur.",
     example: "Une agence commande une prestation pour le compte d'un client final.",
     erp: "Distinguer donneur d'ordre, acheteur, payeur et destinataire.",
-    annexPage: 63
+    annexPage: 79
   }),
   afnorCase({
     id: 14,
@@ -205,7 +213,7 @@ export const cases = [
     description: "Remboursement d'une facture initialement payée par un tiers.",
     example: "Un intermédiaire paie une dépense puis refacture le débours à son commettant.",
     erp: "Identifier la facture source, le tiers ayant payé et le remboursement demandé.",
-    annexPage: 67
+    annexPage: 83
   }),
   afnorCase({
     id: 15,
@@ -216,7 +224,7 @@ export const cases = [
     description: "Cas marketplace ou intermédiaire de paiement, éventuellement aussi tiers facturant sous mandat.",
     example: "Une marketplace collecte le paiement et peut émettre la facture sous mandat.",
     erp: "Gérer intermédiaire de paiement, tiers facturant, mandat et bénéficiaire de paiement.",
-    annexPage: 67
+    annexPage: 83
   }),
   afnorCase({
     id: 16,
@@ -227,7 +235,7 @@ export const cases = [
     description: "Document de débit à traiter dans le cycle de facturation et de correction.",
     example: "Un acheteur émet une note de débit liée à un écart prix ou quantité.",
     erp: "Qualifier note de débit, avoir, facture rectificative et impact comptable.",
-    annexPage: 73
+    annexPage: 89
   }),
   afnorCase({
     id: 17,
@@ -238,7 +246,7 @@ export const cases = [
     description: "Facture émise par un tiers pour le compte du vendeur, ou par l'acheteur en auto-facturation.",
     example: "Un mandataire crée la facture pour le vendeur, ou l'acheteur émet la facture au nom du vendeur.",
     erp: "Conserver les mandats, inverser correctement les rôles et contrôler la numérotation.",
-    annexPage: 74
+    annexPage: 90
   }),
   afnorCase({
     id: 18,
@@ -249,7 +257,7 @@ export const cases = [
     description: "Chaîne facture d'acompte puis facture finale, avec acompte déjà payé ou encore à payer.",
     example: "Un acompte est facturé à la commande, puis déduit sur la facture finale.",
     erp: "Chaîner commande, acompte, paiement, facture finale et solde restant dû.",
-    annexPage: 81
+    annexPage: 99
   }),
   afnorCase({
     id: 19,
@@ -260,7 +268,7 @@ export const cases = [
     description: "Escompte appliqué à une prestation de services lorsque la TVA devient exigible à l'encaissement.",
     example: "Un client règle rapidement une prestation et bénéficie d'un escompte.",
     erp: "Réconcilier montant facturé, montant encaissé, escompte et TVA exigible.",
-    annexPage: 86
+    annexPage: 104
   }),
   afnorCase({
     id: 20,
@@ -271,7 +279,7 @@ export const cases = [
     description: "Escompte appliqué à une livraison de biens ou prestation avec option TVA sur les débits.",
     example: "Un escompte réduit le montant payé d'une facture de marchandises.",
     erp: "Gérer l'écart de paiement sans casser la ventilation fiscale initiale.",
-    annexPage: 88
+    annexPage: 106
   }),
   afnorCase({
     id: 21,
@@ -282,7 +290,7 @@ export const cases = [
     description: "Cas de flux en auto-facturation impliquant un particulier et un professionnel.",
     example: "Un professionnel formalise une opération avec un particulier via un flux d'auto-facturation.",
     erp: "Qualifier le statut du particulier et le périmètre e-reporting/e-invoicing.",
-    annexPage: 90
+    annexPage: 108
   }),
   afnorCase({
     id: 22,
@@ -293,7 +301,7 @@ export const cases = [
     description: "Sommes versées à titre d'arrhes, à distinguer des acomptes et du prix taxable.",
     example: "Un client verse des arrhes avant confirmation définitive d'une opération.",
     erp: "Distinguer arrhes, acompte, indemnité et facture taxable.",
-    annexPage: 91
+    annexPage: 109
   }),
   afnorCase({
     id: 23,
@@ -304,7 +312,7 @@ export const cases = [
     description: "Traitement des bons à usage unique ou multiple et des cartes cadeaux.",
     example: "Une entreprise achète des cartes cadeaux ou bons utilisables chez un tiers.",
     erp: "Séparer émission, utilisation, commission et régime TVA du bon.",
-    annexPage: 91
+    annexPage: 109
   }),
   afnorCase({
     id: 24,
@@ -315,7 +323,7 @@ export const cases = [
     description: "Facture intégrant une réserve contractuelle ayant un impact sur traitement ou paiement.",
     example: "Une partie du montant est retenue jusqu'à levée d'une réserve.",
     erp: "Tracer réserve, échéance, retenue et statut de traitement.",
-    annexPage: 93
+    annexPage: 111
   }),
   afnorCase({
     id: 25,
@@ -326,7 +334,7 @@ export const cases = [
     description: "Traitement des tickets de péage lorsqu'ils sont vendus à un assujetti.",
     example: "Un opérateur facture des péages à une entreprise de transport.",
     erp: "Qualifier justificatif, facture, TVA et regroupement éventuel.",
-    annexPage: 94
+    annexPage: 112
   }),
   afnorCase({
     id: 26,
@@ -337,7 +345,7 @@ export const cases = [
     description: "Traitement des notes de restaurant selon seuil, destinataire et obligations associées.",
     example: "Un restaurant remet une note à un client professionnel ou non assujetti.",
     erp: "Contrôler seuils, justificatifs, déductibilité et éventuel e-reporting.",
-    annexPage: 95
+    annexPage: 113
   }),
   afnorCase({
     id: 27,
@@ -348,7 +356,7 @@ export const cases = [
     description: "Cas de groupe TVA / assujetti unique et interactions entre membres.",
     example: "Deux membres d'un assujetti unique échangent une prestation.",
     erp: "Identifier les membres, le représentant et les flux internes/externes.",
-    annexPage: 97
+    annexPage: 115
   }),
   afnorCase({
     id: 28,
@@ -359,7 +367,7 @@ export const cases = [
     description: "Une opération déjà déclarée en e-reporting fait ensuite l'objet d'une facture.",
     example: "Un client demande après coup une facture pour une vente initialement B2C.",
     erp: "Eviter la double collecte TVA et marquer le cadre de facturation dédié.",
-    annexPage: 97
+    annexPage: 115
   }),
   afnorCase({
     id: 29,
@@ -370,7 +378,7 @@ export const cases = [
     description: "Facture combinant opération principale et accessoire avec qualification commune ou distincte.",
     example: "Une vente de bien inclut une retouche, livraison ou installation accessoire.",
     erp: "Qualifier lignes principales/accessoires et régime TVA applicable.",
-    annexPage: 99
+    annexPage: 117
   }),
   afnorCase({
     id: 30,
@@ -381,7 +389,7 @@ export const cases = [
     description: "Paiements périodiques avec complément, trop-perçu ou régularisation finale.",
     example: "Un client verse des mensualités puis reçoit une régularisation.",
     erp: "Gérer échéancier, régularisation, trop-perçu et statut d'encaissement.",
-    annexPage: 101
+    annexPage: 120
   }),
   afnorCase({
     id: 31,
@@ -392,7 +400,7 @@ export const cases = [
     description: "Régime particulier où la TVA est calculée sur la marge et non sur le prix total.",
     example: "Vente de biens d'occasion sous régime de marge.",
     erp: "Bloquer le calcul TVA standard et utiliser les mentions/régimes dédiés.",
-    annexPage: 105
+    annexPage: 125
   }),
   afnorCase({
     id: 32,
@@ -403,7 +411,7 @@ export const cases = [
     description: "Gestion d'encaissements fractionnés ou annulés dans le cycle de vie.",
     example: "Un paiement partiel est reçu puis une écriture d'encaissement est annulée.",
     erp: "Tracer chaque encaissement, annulation, montant et date.",
-    annexPage: 107
+    annexPage: 127
   }),
   afnorCase({
     id: 33,
@@ -414,7 +422,7 @@ export const cases = [
     description: "Traitement spécifique des notes ou factures liées aux droits d'auteur.",
     example: "Un auteur transmet une note à une société cliente.",
     erp: "Qualifier auteur, assujettissement, retenues et régime TVA.",
-    annexPage: 108
+    annexPage: 127
   }),
   afnorCase({
     id: 34,
@@ -425,66 +433,72 @@ export const cases = [
     description: "Opérations où certaines données de facture ou d'échange sont sensibles.",
     example: "Une prestation protégée par secret professionnel nécessite un traitement restreint.",
     erp: "Contrôler visibilité, droits d'accès, données exposées et audit.",
-    annexPage: 108
+    annexPage: 128
   }),
   afnorCase({
     id: 35,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°37",
     category: "sectoriel",
     title: "Sociétés en participation",
     description: "Facturation impliquant une société en participation ou un schéma assimilé.",
     example: "Des partenaires opèrent conjointement sans structure sociétaire classique visible dans la facture.",
-    erp: "Documenter les parties, mandats, quote-parts et responsabilités fiscales."
+    erp: "Documenter les parties, mandats, quote-parts et responsabilités fiscales.",
+    annexPage: 128
   }),
   afnorCase({
     id: 36,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°38",
     category: "sectoriel",
     title: "Factures avec sous-lignes et regroupements de lignes",
     description: "Factures dont les lignes agrègent des sous-lignes ou détails opérationnels.",
     example: "Une facture d'énergie ou transport regroupe plusieurs index, services ou taxes.",
-    erp: "Maintenir détail opérationnel, ligne fiscale et regroupement lisible."
+    erp: "Maintenir détail opérationnel, ligne fiscale et regroupement lisible.",
+    annexPage: 130
   }),
   afnorCase({
     id: 37,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°39",
     category: "plateforme",
     title: "Facture multi-vendeurs / intermédiaire transparent regroupant des ventes de plusieurs vendeurs",
     description: "Un intermédiaire regroupe des ventes réalisées par plusieurs vendeurs.",
     example: "Une plateforme agrège des ventes de plusieurs fournisseurs sur un document ou processus.",
-    erp: "Ne pas perdre le vendeur réel, les montants par vendeur et les mandats."
+    erp: "Ne pas perdre le vendeur réel, les montants par vendeur et les mandats.",
+    annexPage: 134
   }),
   afnorCase({
     id: 38,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°40",
     category: "statuts",
     type: "Compensation",
     title: "Paiements groupés, netting ou compensation en cas d'achat / vente croisés",
     description: "Règlement par compensation ou netting entre factures clients et fournisseurs.",
     example: "Deux entreprises sont à la fois clientes et fournisseurs et compensent leurs soldes.",
-    erp: "Conserver chaque facture séparément et tracer l'accord de compensation."
+    erp: "Conserver chaque facture séparément et tracer l'accord de compensation.",
+    annexPage: 141
   }),
   afnorCase({
     id: 39,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°41",
     category: "sectoriel",
     title: "Sociétés de barter",
     description: "Opérations d'échange, barter ou compensation commerciale organisée.",
     example: "Des prestations sont échangées via un réseau de barter plutôt que réglées directement en numéraire.",
-    erp: "Qualifier contrepartie, valorisation, TVA et lettrage."
+    erp: "Qualifier contrepartie, valorisation, TVA et lettrage.",
+    annexPage: 142
   }),
   afnorCase({
     id: 40,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°42",
     category: "sectoriel",
     title: "Gestion de la détaxe",
     description: "Traitement des opérations de détaxe et des justificatifs associés.",
     example: "Une vente peut donner lieu à détaxe selon le client, le territoire et les justificatifs.",
-    erp: "Contrôler éligibilité, preuve, statut fiscal et régularisation éventuelle."
+    erp: "Contrôler éligibilité, preuve, statut fiscal et régularisation éventuelle.",
+    annexPage: 143
   }),
   afnorCase({
     id: 41,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°43",
     category: "b2b-int",
     type: "B2B international / e-reporting",
     title: "Factures B2B internationales et e-reporting",
@@ -492,39 +506,43 @@ export const cases = [
     example: "Une société française facture une entreprise étrangère.",
     format: "E-reporting transaction selon qualification",
     erp: "Identifier pays, TVA, client assujetti, devise et flux de reporting.",
-    sources: [...AFNOR_SOURCES, "transaction-data-local", "legifrance-cgi-annexe-iv"]
+    sources: [...AFNOR_SOURCES, "transaction-data-local", "legifrance-cgi-annexe-iv"],
+    annexPage: 146
   }),
   afnorCase({
     id: 42,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°43a",
     category: "b2b-int",
     type: "Opération internationale",
     title: "Opérations triangulaires",
     description: "Opérations impliquant plusieurs parties situées dans plusieurs pays.",
     example: "A vend à B mais la marchandise est livrée directement de C vers le client final.",
     format: "Qualification TVA et e-reporting selon circuit",
-    erp: "Tracer pays des parties, flux physique, flux facture et régime TVA."
+    erp: "Tracer pays des parties, flux physique, flux facture et régime TVA.",
+    annexPage: 152
   }),
   afnorCase({
     id: 43,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°43b",
     category: "b2b-int",
     type: "Intracommunautaire",
     title: "Transferts de stocks assimilés à des livraisons intracommunautaires",
     description: "Transfert de stocks pouvant être assimilé fiscalement à une livraison intracommunautaire.",
     example: "Une entreprise déplace des stocks entre États membres sans vente immédiate.",
     format: "Qualification TVA / e-reporting selon régime",
-    erp: "Relier mouvement de stock, établissement, pays et traitement TVA."
+    erp: "Relier mouvement de stock, établissement, pays et traitement TVA.",
+    annexPage: 153
   }),
   afnorCase({
     id: 44,
-    afnorCase: "Cas complémentaire",
+    afnorCase: "Cas n°44",
     category: "b2b-int",
     type: "Territoires",
     title: "Transactions avec les DROM / COM / TAAF",
     description: "Opérations avec territoires ultramarins nécessitant une qualification territoriale.",
     example: "Une société de métropole facture ou livre vers un DROM, une COM ou les TAAF.",
     format: "Qualification territoriale avant e-invoicing/e-reporting",
-    erp: "Maintenir tables territoires, pays, TVA, exonérations et routage."
+    erp: "Maintenir tables territoires, pays, TVA, exonérations et routage.",
+    annexPage: 154
   })
 ];

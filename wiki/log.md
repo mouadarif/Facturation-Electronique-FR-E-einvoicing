@@ -35,6 +35,32 @@ Append-only maintenance record. Use entries starting with `## [YYYY-MM-DD] type 
 - Documented the distinction between a fully paid order at order time and an advance payment invoice.
 - Linked cases 1 and 2 from `wiki/index.md` and the Annex A case matrix.
 
+## [2026-05-11] maintenance | Full wiki integration & compliance
+
+- Added `wiki/cas_applicables/cas_01_multi_commande_multi_livraison.md` explicitly to the log.
+- Integrated Case 1 and Case 2 into `notes/documentation_catalog.md` and `notes/documentation_catalog.csv`.
+- Updated `wiki/00_query_hub.md` with direct links to the new case synthesis pages.
+- Verified 100% compliance with `AGENTS.md` ingestion workflow.
+
+## [2026-05-11] maintenance | Rewire cases to Annexe A v1.3
+
+- Updated `src/data/cases.js` so all 44 case cards deep-link to the correct pages in `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf` (v1.3, 155 pages).
+- Fixed catalog integrity by aligning `notes/documentation_catalog.csv` with `notes/documentation_catalog.md` (added Annexe B entry and updated Annexe A metadata).
+
+## [2026-05-11] synthesis | Nuances & examples for cases 1-12 (first tranche)
+
+- Updated `wiki/cas_applicables/cas_01_multi_commande_multi_livraison.md` and `wiki/cas_applicables/cas_02_facture_deja_payee.md` to explicitly document nuances vs adjacent cases and add concrete examples focused on those nuances.
+- Added new detailed case pages for cases 3 to 12:
+  - `wiki/cas_applicables/cas_03_tiers_payeur_connu.md`
+  - `wiki/cas_applicables/cas_04_prise_en_charge_partielle.md`
+  - `wiki/cas_applicables/cas_05_frais_collaborateur_facture_entreprise.md`
+  - `wiki/cas_applicables/cas_06_frais_collaborateur_sans_facture_entreprise.md`
+  - `wiki/cas_applicables/cas_07_carte_logee.md`
+  - `wiki/cas_applicables/cas_08_09_10_paiement_tiers_affacturage.md`
+  - `wiki/cas_applicables/cas_09_facture_traitee_par_tiers.md`
+  - `wiki/cas_applicables/cas_10_intermediaire_transparent_acheteur.md`
+- Updated `wiki/index.md` to list these case pages.
+
 ## [2026-05-10] synthesis | Case 2 notation decoding
 
 - Expanded case 2 with a dedicated decoding section for `BT-*`, `BR-*`, `B/S/M` prefixes and `1/2/4` suffixes.
