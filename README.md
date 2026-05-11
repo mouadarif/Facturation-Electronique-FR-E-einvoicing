@@ -204,21 +204,3 @@ Elle ne fournit pas d'authentification native. Pour une exposition intranet ou r
 
 Ne pas exposer directement l'application sur Internet sans revue de sécurité.
 
-## Avant publication sur GitHub
-
-Avant de pousser ce dépôt, vérifier :
-
-- que le dépôt Git pointe bien sur ce projet, pas sur le dossier utilisateur parent ;
-- que les fichiers sensibles ou personnels ne sont pas suivis ;
-- que les documents soumis à licence ou confidentiels peuvent être publiés ;
-- que les sources AFNOR, supports entreprise et documents spécifiques ne violent pas de droits de diffusion ;
-- que `.env`, exports internes, vidéos, fichiers personnels et données client ne sont pas inclus ;
-- que `npm test` passe.
-
-Pour un dépôt public, il est recommandé de publier uniquement le code, la wiki autorisée et les liens vers sources officielles publiques. Les PDF sous licence ou supports internes doivent rester hors dépôt public.
-
-## Licence
-
-À définir avant publication GitHub.
-
-Si le dépôt contient des documents tiers, la licence du code ne couvre pas automatiquement ces documents.
