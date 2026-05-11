@@ -1,0 +1,36 @@
+type,title,url,note
+page,Impots - Je passe à la facturation électronique,https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique,hub DGFiP principal
+page,Impots - Je découvre la facturation électronique,https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique,vue métier / vulgarisation
+page,Impots - J'approfondis mes connaissances sur la réforme,https://www.impots.gouv.fr/japprofondis-mes-connaissances-sur-la-reforme,vue détaillée + docs techniques
+page,Impots - Spécifications externes et normes,https://www.impots.gouv.fr/specifications-externes-b2b,page officielle des specs
+zip_link,Spécifications externes v3.1 (31/10/2025),https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/specification_externes_b2b/specifications-externes-v3.1.zip,archive officielle ; non copiée localement car outil local refuse les ZIP
+page,Impots - Liste des plateformes agréées,https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees,liste officielle PDP publiée / mise à jour
+page,Impots - Service d’immatriculation des plateformes agréées,https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees,cadre du service d’immatriculation
+page,Economie - Tout savoir sur la facturation électronique pour les entreprises,https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises,portail Bercy de synthèse
+page,AIFE - Facturation électronique interentreprises,https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b/,rôle AIFE / annuaire / PPF
+page,Bercy Infos - Annuaire de la facturation électronique,https://www.economie.gouv.fr/entreprises/gerer-son-entreprise-au-quotidien/gerer-sa-comptabilite-et-ses-demarches/quest-ce-que-lannuaire-de-la-facturation-electronique,article pratique annuaire
+page,Bercy Infos - Mentions obligatoires d’une facture,https://www.economie.gouv.fr/entreprises/gerer-son-entreprise-au-quotidien/gerer-sa-comptabilite-et-ses-demarches/mentions-obligatoires-dune-facture-tout-savoir,mentions obligatoires + 4 nouvelles mentions
+page,Economie - Point d’étape vidéo de la réforme,https://www.economie.gouv.fr/actualites/video-facturation-electronique-point-detape-de-la-mise-en-oeuvre-de-la-reforme,page officielle de la conférence du 25/02/2026
+video,YouTube - Tout savoir sur la facturation électronique,https://www.youtube.com/watch?v=FoXJq-GfFrg,vidéo officielle relayée par impots.gouv.fr
+video,YouTube - La réforme expliquée par la DGFiP,https://www.youtube.com/watch?v=Wu-auBDfiV0,vidéo DGFiP
+video,YouTube - Campagne de communication DGFiP,https://www.youtube.com/watch?v=m8I3vux0K68,spot officiel
+press,Presse - Dossier de presse campagne 25/02/2026,https://presse.economie.gouv.fr/facturation-electronique-lancement-de-la-campagne-dinformation/,page presse officielle
+press_pdf,Presse - PDF dossier de presse campagne 25/02/2026,https://presse.economie.gouv.fr/download?id=171746&n=423+-+DP+-+Facturation+%C3%A9lectronique+-+Lancement+de+la+campagne+d%27information-pdf,PDF officiel
+legal,"Légifrance - Loi de finances pour 2026, article 123",https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000053508878,texte officiel
+legal,Légifrance - Décret n°2024-266 du 25 mars 2024,https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049328045,texte officiel
+legal,"Légifrance - CGI annexe II, III bis (articles 242 nonies B à P)",https://www.legifrance.gouv.fr/codes/id/LEGISCTA000046385428/2026-09-01,cadre réglementaire consolidé
+legal,"Légifrance - CGI annexe IV, A : transmission des factures électroniques",https://www.legifrance.gouv.fr/codes/id/LEGISCTA000046385458/2026-09-01,données à transmettre et mentions structurées
+norm,AFNOR XP Z12-012,https://www.boutique.afnor.org/fr-fr/norme/xp-z12012/formats-et-profils-des-messages-factures-et-statuts-de-cycle-de-vie-constit/fa300082/466440,formats et profils
+norm,AFNOR XP Z12-013,https://www.boutique.afnor.org/fr-fr/norme/xp-z12013/-api-pour-interfacer-les-systemes-dinformations-des-entreprises-avec-les-pl/fa300084/466438,API
+norm,AFNOR XP Z12-014,https://www.boutique.afnor.org/fr-fr/norme/xp-z12014/cas-dusage-b2b-applicables-dans-le-cadre-la-reforme-facture-electronique-en/fa300081/466439,cas d’usage B2B
+page,Annuaire public Chorus Pro,https://facturation.chorus-pro.gouv.fr/annuaire,consultation publique de l’annuaire
+video,YouTube - Introduction à l'annuaire de la facturation électronique,https://www.youtube.com/watch?v=etgEcw81EuI,vidéo de démonstration officielle relayée par l’AIFE
+page,Impots - Rejoindre le réseau Peppol,https://www.impots.gouv.fr/rejoindre-le-reseau-peppol,cadre Peppol France
+pdf,Impots - Liste des documents à fournir pour devenir une PDP,https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/liste-des-documents-a-fournir-pour-devenir-une-pdp.pdf,pièces attendues pour immatriculation
+pdf,Impots - Guide utilisateur immatriculation PDP,https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_utilisateur_fe_ds_immatriculation_pdp.pdf,guide de dépôt du dossier
+pdf,Impots - FAQ PDP,https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/faq---plateformes_de_dematerialisation-v16102024.pdf,faq dédiée plateformes agréées
+pdf,Impots - Fiche PDP,https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/fiches_reforme/fiche-pdp.pdf,fiche pédagogique plateformes agréées
+pdf,Impots - Fiche opérateurs de dématérialisation,https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/fiches_reforme/fiche-od.pdf,fiche pédagogique OD
+pdf,Impots - AFNOR XP Z12-012,https://www.impots.gouv.fr/factures-norme-afnor,formats et profils
+article,Impots - Publication des nouvelles versions des spécifications externes,https://www.impots.gouv.fr/actualite/facturation-electronique-publication-des-nouvelles-versions-des-specifications-externes,publication 17/11/2025
+article,Impots - Nouvelle version des spécifications externes,https://www.impots.gouv.fr/actualite/facturation-electronique-nouvelle-version-des-specifications-externes,publication 18/12/2024

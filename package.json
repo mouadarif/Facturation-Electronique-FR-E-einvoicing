@@ -1,0 +1,19 @@
+{
+  "name": "facture-electronique-wiki-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "node tools/serve-secure.mjs",
+    "preview:vite": "vite preview --host 127.0.0.1",
+    "test": "npm run test:wiki && npm run test:links && npm run build",
+    "test:wiki": "node tools/wiki-health.mjs",
+    "test:links": "node tools/check-links.mjs"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "vite": "^7.3.0"
+  }
+}

@@ -1,0 +1,12 @@
+category,title,kind,source_status,local_path_or_pointer,notes
+entrypoint,Start here,markdown,local,00_START_HERE_MTJ.md,Point d'entrée MTJ
+metier,Scope et impacts,markdown,local,metier/01_METIER_SCOPE_ET_IMPACTS.md,Synthèse métier
+juridique,Socle réglementaire,markdown,local,juridique/01_SOCLE_REGLEMENTAIRE.md,Synthèse juridique
+technique,Formats ZIP XML exemples,markdown,local,technique/01_FORMATS_ZIPS_XML_EXEMPLES.md,Point d'entrée technique
+technique,Archives officielles et pointeurs,markdown,local,technique/formats/02_OFFICIAL_ARCHIVES_AND_POINTERS.md,Inclut URL ZIP v3.1
+technique,Formats et exemples statiques,markdown,local,technique/formats/03_FORMATS_AND_STATIC_EXAMPLES_NOTES.md,Note limite ZIP
+pdp,PDP scope officiel et liste,markdown,local,technique/pdp/02_PDP_SCOPE_OFFICIEL_ET_LISTE.md,Officiel vs non officiel
+technique,D365 F&O outils et chemins,markdown,local,technique/d365_fo/03_D365_FO_OUTILS_ET_CHEMINS.md,Microsoft Learn
+technique,GitHub utiles,markdown,local,technique/github/04_GITHUB_UTILES.md,Ecosystème non officiel
+technique,Vidéos officielles,markdown,local,technique/videos/05_VIDEOS_OFFICIELLES.md,DGFiP + AIFE
+platforms,Présentation labels PA / solution compatible,pdf,downloaded,docs_platforms/presentation_labels_plateforme_agreee_solution_compatible.pdf,Nouveau PDF officiel

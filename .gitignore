@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.cache/
+.env
+.env.*
+desktop.ini
+Thumbs.db
+*-WFFRCOMMOUIBN01.*
+docs_specific
