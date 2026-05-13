@@ -23,7 +23,17 @@ Ce cas couvre une facture dont la **réception et/ou le traitement** (contrôle,
 
 Un cabinet comptable reçoit les factures fournisseurs de l’entreprise, les contrôle, pose les statuts (approuvée, en litige, etc.) et prépare le paiement. L’entreprise garde la responsabilité juridique, mais délègue les actions opérationnelles au tiers.
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 8 a 10** | Paiement dirige vers un tiers beneficiaire | **B2B e-invoicing / statuts** | Le sujet est le beneficiaire du paiement. |
+| **Cas 11** | Facture recue et traitee par un tiers pour l'acheteur | **Routage / delegation via PA** | Le sujet est le traitement pour compte de l'acheteur. |
+| **Cas 12** | Intermediaire transparent gestionnaire de facture | **Routage / organisation dediee** | Le tiers est structurant dans l'organisation de reception et de gestion. |
+
+Difference centrale : le cas 11 ne change pas l'acheteur juridique et ne signifie pas que le tiers paie la facture; il traite seulement pour le compte de l'acheteur.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 9 (libellé “Cas n°11”).
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=59` : Annexe A v1.3, cas n°11.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=59` : Annexe A v1.3, cas n°11.

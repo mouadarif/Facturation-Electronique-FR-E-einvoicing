@@ -1,5 +1,5 @@
 const AFNOR_SOURCES = ["afnor-014", "afnor-014-annexe-a", "afnor-012"];
-const AFNOR_ANNEX_A_PATH = "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf";
+const AFNOR_ANNEX_A_PATH = "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf";
 const AFNOR_MAIN_PATH = "docs_tech/afnor/afnor_xp_z12_014_cas_usage_b2b.pdf";
 
 export const categories = [

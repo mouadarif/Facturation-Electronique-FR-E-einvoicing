@@ -172,14 +172,14 @@ export const sourceReferenceIndex = [
     "id": "afnor-012",
     "label": "AFNOR XP Z12-012 - Formats et profils du socle",
     "type": "norme",
-    "localRelativePath": "docs_tech/afnor/afnor_xp_z12_012_2025.pdf",
+    "localRelativePath": "docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf",
     "localExists": true,
     "localKind": "pdf",
-    "localUrl": "/docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=1",
+    "localUrl": "/docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf#page=1",
     "localPage": 1,
     "localPageLabel": "Page 1",
     "pageCount": 59,
-    "excerpt": "XP Z12-012 MAI 2025 Ce document est \u00e0 usage exclusif et non collectif des clients AFNOR. Toute mise en r\u00e9seau, reproduction et rediffusion, sous quelque forme que ce soit, m\u00eame partielle, sont strictement interdites. AFNOR, en tant que titulaire des droits d\u2019auteur ou distributeur autoris\u00e9, s\u2019oppose express\u00e9ment \u00e0 toute int\u00e9gration, transmission ou absorption totale ou partielle du pr\u00e9sent document par des moteurs ou"
+    "excerpt": "XP Z12-012 MAI 2025 Annul\u00e9 le / Withdrawn on 2025-07-30 En tant que titulaire des droits d\u2019auteurs sur ce document, ayant-droit ou distributeur autoris\u00e9 de ce document, AFNOR autorise la consultation et le t\u00e9l\u00e9chargement selon les droits qui vous sont allou\u00e9s pour votre abonnement ou votre achat. Tous autres droits relatifs \u00e0 ces documents sont r\u00e9serv\u00e9s. AFNOR s\u2019oppose express\u00e9ment \u00e0 toute int\u00e9gration, transmission o"
   },
   {
     "id": "wiki-afnor-roles",
@@ -289,14 +289,14 @@ export const sourceReferenceIndex = [
     "id": "afnor-014-annexe-a",
     "label": "AFNOR SG2 - XP Z12-014 Annexe A cas d'usage B2B",
     "type": "norme",
-    "localRelativePath": "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf",
+    "localRelativePath": "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf",
     "localExists": true,
     "localKind": "pdf",
-    "localUrl": "/docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=1",
+    "localUrl": "/docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=1",
     "localPage": 1,
     "localPageLabel": "Page 1",
-    "pageCount": 108,
-    "excerpt": "XP Z12-014 - Cas d\u2019usage B2B applicables dans le cadre la R\u00e9forme Facture \u00c9lectronique en France. ANNEXE A (normative) : Description des principaux cas d\u2019usage sp\u00e9cifiques Page 1/108 Commission de Normalisation AFNOR Facture \u00c9lectronique XP Z12-014 Annexe A Description des principaux cas d\u2019usage sp\u00e9cifiques Version 1.0 du 13 juin 2025 GESTION DE VERSION N\u00b0 de Version Date de Version Description des \u00e9volutions V1.0 20"
+    "pageCount": 155,
+    "excerpt": "XP Z12-014 - Cas d\u2019usage B2B applicables dans le cadre la R\u00e9forme Facture \u00c9lectronique en France. ANNEXE A (normative) : Description des principaux cas d\u2019usage sp\u00e9cifiques Page 1/155 Commission de Normalisation AFNOR Facture \u00c9lectronique XP Z12-014 Annexe A Description des principaux cas d\u2019usage sp\u00e9cifiques Version 1.3 du 26 f\u00e9vrier 2026 R\u00e9dacteur : FNFE-MPE, sur la base des travaux initiaux de la DPFE de la DGFIP et"
   },
   {
     "id": "legifrance-decret-2024",
@@ -400,7 +400,7 @@ export const sourceReferenceIndex = [
     "localPage": null,
     "localPageLabel": "Note locale",
     "pageCount": null,
-    "excerpt": "03 \u2014 Sources officielles et liens Hubs officiels - DGFiP \u2014 Je passe \u00e0 la facturation \u00e9lectronique https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique - DGFiP \u2014 Je d\u00e9couvre https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique - DGFiP \u2014 J\u2019approfondis https://www.impots.gouv.fr/japprofondis-mes-connaissances-sur-la-reforme - AIFE \u2014 facturation \u00e9lectronique interentre"
+    "excerpt": "03 - Sources officielles et liens Hubs officiels - DGFiP - Je passe \u00e0 la facturation \u00e9lectronique https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique - DGFiP - Je d\u00e9couvre https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique - DGFiP - J'approfondis https://www.impots.gouv.fr/japprofondis-mes-connaissances-sur-la-reforme - AIFE - Facturation \u00e9lectronique interentre"
   },
   {
     "id": "youtube-annuaire",
@@ -413,6 +413,6 @@ export const sourceReferenceIndex = [
     "localPage": null,
     "localPageLabel": "Note locale",
     "pageCount": null,
-    "excerpt": "03 \u2014 Sources officielles et liens Hubs officiels - DGFiP \u2014 Je passe \u00e0 la facturation \u00e9lectronique https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique - DGFiP \u2014 Je d\u00e9couvre https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique - DGFiP \u2014 J\u2019approfondis https://www.impots.gouv.fr/japprofondis-mes-connaissances-sur-la-reforme - AIFE \u2014 facturation \u00e9lectronique interentre"
+    "excerpt": "03 - Sources officielles et liens Hubs officiels - DGFiP - Je passe \u00e0 la facturation \u00e9lectronique https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique - DGFiP - Je d\u00e9couvre https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique - DGFiP - J'approfondis https://www.impots.gouv.fr/japprofondis-mes-connaissances-sur-la-reforme - AIFE - Facturation \u00e9lectronique interentre"
   }
 ];

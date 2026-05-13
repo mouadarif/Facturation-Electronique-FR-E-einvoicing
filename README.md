@@ -1,23 +1,25 @@
 # Facture électronique France - Wiki Explorer
 
-Contact, suggestions ou améliorations : [ibnelaryf.mouad@gmail.com](mailto:ibnelaryf.mouad@gmail.com)
+Pour me contacter,proposer des suggestions ou améliorations : [ibnelaryf.mouad@gmail.com](mailto:ibnelaryf.mouad@gmail.com)
 
-Application locale et base documentaire pour explorer la réforme française de la facturation électronique : cas d'usage AFNOR, obligations e-invoicing/e-reporting, références officielles, contexte entreprise et impacts ERP.
+Ce répertoire sert d'une application visuelle et base documentaire pour faciliter l'exploration des différents aspects de la réforme française de la facturation électronique  : cas d'usage AFNOR, obligations e-invoicing/e-reporting, références officielles, exigences techniques. 
 
 Le projet sert à la fois de :
 
 - **application web Vite** pour naviguer dans les cas de réforme ;
-- **wiki de synthèse** pour capitaliser les connaissances métier, juridiques et techniques ;
+- **wiki de synthèse** pour capitaliser les connaissances métier, juridiques et techniques selon le besoin personnel de l'utilisateur pour une appréhension sur mesure des notions de la réforme et des cas d'usages;
 - **assistant personnel de connaissance** pour aider l'utilisateur à clarifier les zones d'ombre de la réforme ;
-- **pack documentaire local** avec sources, catalogues et index de pages PDF.
+- **pack documentaire local** avec sources, catalogues et index de pages PDF des ressources officiels.
 
 ## Rôle du wiki
 
 Le wiki est le coeur vivant du projet. Il ne sert pas seulement à stocker des notes : il accompagne l'utilisateur comme un assistant personnel de recherche, de clarification et de structuration.
 
-Son objectif est de construire progressivement une base de connaissance solide, détaillée et traçable autour de la facturation électronique française. Les sujets ambigus, les contradictions entre sources, les questions ouvertes, les points fiscaux à qualifier et les impacts ERP sont documentés au fil de l'eau.
+Son objectif est de construire progressivement une base de connaissances solide, détaillée et traçable autour de la facturation électronique française. Les sujets ambigus, les contradictions entre les sources, les questions ouvertes, les points fiscaux à qualifier et les impacts sur l'écosystème technologique (ERP, OD, PPF) sont documentés au fil de l'eau. 
 
-Ce travail est volontairement en continuation : la réforme évolue, les sources officielles changent, les interprétations se précisent et les cas métier se complètent. Le wiki permet donc de garder une mémoire durable des analyses, au lieu de repartir de zéro à chaque question.
+Voici une version équilibrée, à la fois professionnelle et fluide, qui synthétise toutes vos idées en un texte cohérent :
+
+ Ce travail s'inscrit volontairement dans la continuité : la réforme évolue, les sources officielles mutent et les interprétations se précisent. Cette application progresse ainsi au rythme de nos connaissances, s'affinant au gré des nuances découvertes lors du développement. Le wiki permet alors de conserver une mémoire durable des analyses, évitant de repartir de zéro à chaque nouvelle interrogation.
 
 Les principales entrées du wiki sont :
 

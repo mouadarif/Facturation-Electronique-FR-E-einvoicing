@@ -1,20 +1,27 @@
 import { companyProfile, applicableContextCases, trainingExpectations } from "../data/companyContext.js";
-import { requirementsForCase } from "../data/requirements.js";
 import { renderSaaSTable } from "./tables.js";
 import {
   allCaseSourceReferences,
+  caseApplicabilityFor,
+  caseApplicabilityOptions,
   annexAReferenceForCase,
+  caseColorOptions,
+  caseOverrideFor,
   cases,
   casesByIds,
   categories,
   contextSourceReferences,
   contextById,
   filteredCases,
+  hierarchyForCase,
+  isCaseApplicableToCompany,
   listHtml,
   primaryReferenceForCase,
   primaryReferenceForContext,
   tableRowsForCase,
-  toneFor
+  toneFor,
+  toneForCase,
+  wikiPathForCase
 } from "./model.js";
 
 const viewCards = [
@@ -41,6 +48,12 @@ const viewCards = [
     title: "Parcours de formation",
     eyebrow: "Formation",
     description: "Attentes de formation reliees aux cas complexes et aux obligations e-invoicing et e-reporting."
+  },
+  {
+    id: "management",
+    title: "Pilotage des cas",
+    eyebrow: "Parametrage",
+    description: "Ajuster la couleur, l'applicabilite et les notes locales propres a votre entreprise."
   }
 ];
 
@@ -58,8 +71,9 @@ export function buildAppHtml(state) {
       ${state.activeView === "library" ? renderCaseLibrary(state) : ""}
       ${state.activeView === "datasets" ? renderDatasets() : ""}
       ${state.activeView === "training" ? renderTraining() : ""}
+      ${state.activeView === "management" ? renderCaseManagement(state) : ""}
     </div>
-    ${buildCaseModal(selectedCase)}
+    ${buildCaseModal(selectedCase, state)}
     ${buildTableModal(selectedTableCase, tablePack)}
     ${buildContextModal(selectedContext)}
   `;
@@ -91,12 +105,26 @@ function readableLocalUrl(url = "", title = "") {
 
 function renderPrimaryReferenceCard(primaryReference) {
   if (!primaryReference) return "";
-  return `<div class="mt-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600"><p class="font-semibold text-slate-700">Reference principale</p><p class="mt-1 break-all">${formatPrimaryReferencePath(primaryReference)}</p></div>`;
+  return `<div class="mt-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600"><p class="font-semibold text-slate-700">Reference principale</p><p class="mt-1">${primaryReference.pageLabel || primaryReference.title}</p></div>`;
+}
+
+
+function renderWikiCaseCard(item) {
+  const wikiPath = wikiPathForCase(item);
+  if (!wikiPath) return "";
+  return `<div class="mt-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
+    <p class="font-semibold">Fiche wiki locale</p>
+    <p class="mt-1 break-all">${wikiPath}</p>
+    <a href="${readableLocalUrl(`/${wikiPath}`, `Wiki - ${item.afnorCase || item.title}`)}" target="_blank" rel="noreferrer" class="inline-flex mt-2 rounded-lg border border-emerald-200 bg-white px-3 py-2 text-xs font-semibold text-emerald-900 hover:border-emerald-300 hover:bg-emerald-100">Ouvrir la fiche wiki</a>
+  </div>`;
 }
 
 function renderAnnexACard(annexAReference) {
   if (!annexAReference) return "";
-  return `<div class="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800"><p class="font-semibold">Fiche AFNOR Annexe A</p><p class="mt-1">${annexAReference.afnorCase} - ${annexAReference.pageLabel}</p></div>`;
+  return `<div class="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+    <p class="font-semibold">Fiche AFNOR Annexe A</p>
+    <p class="mt-1">${annexAReference.afnorCase} - ${annexAReference.pageLabel}</p>
+  </div>`;
 }
 
 function renderPrimaryReferenceSection(primaryReference) {
@@ -105,7 +133,6 @@ function renderPrimaryReferenceSection(primaryReference) {
     <section class="rounded-xl border border-slate-200 bg-slate-50 p-4">
       <h3 class="mb-2 text-lg font-semibold text-slate-900">Reference principale conseillee</h3>
       <p class="text-sm font-semibold text-slate-800">${primaryReference.title}</p>
-      <p class="mt-2 break-all text-sm text-slate-600">${formatPrimaryReferencePath(primaryReference)}</p>
       <p class="mt-2 text-sm leading-6 text-slate-700">${primaryReference.note}</p>
       <div class="mt-3">
         ${primaryReference.localUrl ? `<a href="${readableLocalUrl(primaryReference.localUrl, primaryReference.title)}" target="_blank" rel="noreferrer" class="inline-flex rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:border-indigo-200 hover:bg-indigo-50">Ouvrir la reference principale</a>` : ""}
@@ -129,6 +156,95 @@ function renderAnnexASection(annexAReference) {
   `;
 }
 
+function renderWikiCaseSection(item, primaryReference) {
+  const wikiPath = wikiPathForCase(item);
+  if (!wikiPath) return "";
+  return `
+    <section class="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+      <h3 class="mb-2 text-lg font-semibold text-emerald-950">Synthese wiki locale</h3>
+      <p class="text-sm leading-6 text-emerald-900">La synthese wiki sert de lecture metier. Pour trancher, privilegier la reference principale du cas.</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        ${primaryReference?.localUrl ? `<a href="${readableLocalUrl(primaryReference.localUrl, primaryReference.title)}" target="_blank" rel="noreferrer" class="inline-flex rounded-lg border border-emerald-200 bg-white px-3 py-2 text-xs font-semibold text-emerald-900 hover:border-emerald-300 hover:bg-emerald-100">Ouvrir la reference principale</a>` : ""}
+        <a href="${readableLocalUrl(`/${wikiPath}`, `Wiki - ${item.afnorCase || item.title}`)}" target="_blank" rel="noreferrer" class="inline-flex rounded-lg border border-emerald-200 bg-emerald-100 px-3 py-2 text-xs font-semibold text-emerald-900 hover:border-emerald-300 hover:bg-emerald-200">Ouvrir la synthese wiki</a>
+      </div>
+    </section>
+  `;
+}
+
+function renderCompanyCaseNoteSection(override) {
+  if (!override.note) return "";
+  return `
+    <section class="rounded-xl border border-amber-200 bg-amber-50 p-4">
+      <h3 class="mb-2 text-lg font-semibold text-amber-950">Note entreprise locale</h3>
+      <p class="whitespace-pre-wrap text-sm leading-6 text-amber-900">${escapeHtml(override.note)}</p>
+    </section>
+  `;
+}
+
+function renderCaseHierarchySection(hierarchy, table, selectedCase) {
+  if (!hierarchy) return "";
+  const gridClass = hierarchy.hierarchies.length > 1 ? "lg:grid-cols-2" : "lg:grid-cols-1";
+  return `
+    <section>
+      <div class="mb-3 flex items-center justify-between gap-3">
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900">Hierarchie structuree</h3>
+          <p class="mt-1 text-sm text-slate-600">Rendu depuis le JSON du cas, genere a partir des annexes structurees locales.</p>
+        </div>
+        <button data-table-case="${selectedCase.id}" class="table-entry rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 hover:border-indigo-200 hover:bg-indigo-50">Ouvrir la table officielle (${table.rows.length})</button>
+      </div>
+      <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+        <div class="flex flex-wrap gap-2">
+          <span class="rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-semibold text-slate-600">${hierarchy.sourceKind.toUpperCase()}</span>
+          <span class="rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-semibold text-slate-600">${hierarchy.summary.rowCount} lignes source</span>
+          <span class="rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-semibold text-slate-600">${hierarchy.generatedFrom}</span>
+        </div>
+        <div class="mt-4 grid gap-3 ${gridClass}">
+          ${hierarchy.hierarchies.map(renderHierarchyCard).join("")}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderHierarchyCard(hierarchy) {
+  return `
+    <article class="rounded-lg border border-slate-200 bg-white p-3">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <h4 class="text-sm font-bold text-slate-900">${hierarchy.label}</h4>
+          <p class="mt-1 text-xs uppercase tracking-wide text-slate-500">${hierarchy.format}</p>
+        </div>
+        <span class="rounded-md bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">${hierarchy.root.count}</span>
+      </div>
+      <div class="mt-3 space-y-2">
+        ${renderHierarchyNodes(hierarchy.root.children || [], 0)}
+      </div>
+    </article>
+  `;
+}
+
+function renderHierarchyNodes(nodes, depth) {
+  if (!nodes.length) {
+    return `<p class="text-xs text-slate-500">Aucune hierarchie detaillee disponible dans la source structuree.</p>`;
+  }
+  return nodes
+    .slice(0, 6)
+    .map(
+      (node) => `
+        <div class="${depth ? "ml-4 border-l border-slate-200 pl-3" : ""}">
+          <div class="flex items-center justify-between gap-2 rounded-md bg-slate-50 px-2 py-1">
+            <span class="truncate text-xs font-semibold text-slate-700">${escapeHtml(node.name)}</span>
+            <span class="shrink-0 text-[11px] font-semibold text-slate-400">${node.count}</span>
+          </div>
+          ${node.examples?.length ? `<div class="mt-1 flex flex-wrap gap-1">${node.examples.slice(0, 2).map((example) => `<span class="rounded bg-white px-1.5 py-1 text-[11px] text-slate-500">${escapeHtml(example.id)}${example.cardinality ? ` ${escapeHtml(example.cardinality)}` : ""}</span>`).join("")}</div>` : ""}
+          ${depth < 1 && node.children?.length ? `<div class="mt-2">${renderHierarchyNodes(node.children, depth + 1)}</div>` : ""}
+        </div>
+      `
+    )
+    .join("");
+}
+
 function renderHeader(state) {
   return `
     <header class="mb-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -144,7 +260,7 @@ function renderHeader(state) {
         </div>
       </div>
       <nav class="mt-4 flex flex-wrap gap-2">
-        ${["home", "context", "library", "datasets", "training"]
+        ${["home", "context", "library", "datasets", "training", "management"]
           .map(
             (view) =>
               `<button data-view="${view}" class="view-tab rounded-lg border px-3 py-2 text-sm font-semibold transition ${
@@ -165,7 +281,8 @@ function labelForView(view) {
     context: "Cas applicables",
     library: "44 cas AFNOR",
     datasets: "Tables officielles",
-    training: "Formation"
+    training: "Formation",
+    management: "Pilotage"
   }[view];
 }
 
@@ -276,29 +393,133 @@ function renderCaseLibrary(state) {
           <input id="searchInput" value="${state.query.replaceAll('"', "&quot;")}" placeholder="Rechercher : acompte, affacturage, TVA etrangere..." class="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100 sm:w-96" />
         </div>
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          ${visibleCases.map(renderCaseCard).join("") || `<div class="col-span-full rounded-lg border border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-500">Aucun cas correspondant.</div>`}
+              ${visibleCases.map((item) => renderCaseCard(item, state)).join("") || `<div class="col-span-full rounded-lg border border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-500">Aucun cas correspondant.</div>`}
         </div>
       </div>
     </section>
   `;
 }
 
-function renderCaseCard(item) {
-  const primaryReference = primaryReferenceForCase(item);
-  const annexAReference = annexAReferenceForCase(item);
+function renderCaseCard(item, state = { caseOverrides: {} }) {
+  const applicability = caseApplicabilityFor(item, state.caseOverrides);
+  const override = caseOverrideFor(item, state.caseOverrides);
   return `
     <button data-case="${item.id}" class="case-card rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
       <div class="mb-3 flex items-start justify-between gap-2">
-        <span class="inline-flex rounded-md border px-2 py-1 text-xs font-semibold ${toneFor(item.category)}">${item.type}</span>
+        <span class="inline-flex rounded-md border px-2 py-1 text-xs font-semibold ${toneForCase(item, state.caseOverrides)}">${item.type}</span>
         <span class="text-xs font-semibold text-slate-400">#${String(item.id).padStart(2, "0")}</span>
       </div>
+      ${renderApplicabilityBadge(applicability, "mb-2")}
       <h3 class="line-clamp-2 text-base font-semibold text-slate-900">${item.title}</h3>
       <p class="mt-2 line-clamp-3 text-sm text-slate-600">${item.description}</p>
-      ${renderPrimaryReferenceCard(primaryReference)}
-      ${renderAnnexACard(annexAReference)}
-      <div class="mt-3 rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">BT + table + hierarchie + exemple</div>
+      ${override.note ? `<span class="mt-3 inline-flex max-w-full rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] font-semibold text-amber-700">Note entreprise</span>` : ""}
     </button>
   `;
+}
+
+function renderCaseManagement(state) {
+  const selected = cases.find((item) => item.id === state.managerCaseId) || cases[0];
+  const selectedOverride = caseOverrideFor(selected, state.caseOverrides);
+  const applicableCount = cases.filter((item) => isCaseApplicableToCompany(item, state.caseOverrides)).length;
+  const reviewCount = cases.filter((item) => caseApplicabilityFor(item, state.caseOverrides) === "review").length;
+  return `
+    <section class="grid gap-4 xl:grid-cols-[1fr_360px]">
+      <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-slate-950">Pilotage couleur et applicabilite</h2>
+            <p class="text-sm text-slate-600">${applicableCount} cas applicables, ${reviewCount} cas a verifier. Les notes et arbitrages sont stockes localement hors livrable.</p>
+          </div>
+          <button id="resetCaseManagement" type="button" class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 hover:border-rose-200 hover:bg-rose-50">Reinitialiser</button>
+        </div>
+        <div class="overflow-auto rounded-lg border border-slate-200">
+          <table class="w-full min-w-[980px] border-collapse text-sm">
+            <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+              <tr>
+                <th class="px-3 py-3">Selection</th>
+                <th class="px-3 py-3">Cas</th>
+                <th class="px-3 py-3">Famille</th>
+                <th class="px-3 py-3">Couleur</th>
+                <th class="px-3 py-3">Applicabilite entreprise</th>
+                <th class="px-3 py-3">Note</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              ${cases.map((item) => renderCaseManagementRow(item, state)).join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <aside class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Cas selectionne</p>
+        <h2 class="mt-2 text-lg font-bold text-slate-950">${selected.afnorCase}</h2>
+        <p class="mt-1 text-sm font-semibold text-slate-800">${selected.title}</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="inline-flex rounded-md border px-2 py-1 text-xs font-semibold ${toneForCase(selected, state.caseOverrides)}">${selected.type}</span>
+          ${renderApplicabilityBadge(selectedOverride.applicability)}
+        </div>
+        <p class="mt-4 text-sm leading-6 text-slate-600">${selected.description}</p>
+        <label for="companyCaseNote" class="mt-5 block text-xs font-semibold uppercase tracking-wide text-slate-500">Note entreprise locale</label>
+        <textarea id="companyCaseNote" data-case-note="${selected.id}" rows="7" class="mt-2 w-full resize-y rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm leading-6 text-slate-700 outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100" placeholder="Note interne, arbitrage, point a confirmer...">${escapeHtml(selectedOverride.note)}</textarea>
+        <p class="mt-2 text-xs leading-5 text-slate-500">Stockee dans .company-local/case-settings.json en local, avec fallback navigateur si l'app est publiee sans serveur local.</p>
+        <button data-case="${selected.id}" class="case-card mt-4 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 hover:border-indigo-200 hover:bg-indigo-50">Ouvrir la fiche du cas</button>
+      </aside>
+    </section>
+  `;
+}
+
+function renderCaseManagementRow(item, state) {
+  const override = caseOverrideFor(item, state.caseOverrides);
+  const selected = item.id === state.managerCaseId;
+  return `
+    <tr class="${selected ? "bg-indigo-50/60" : "bg-white"}">
+      <td class="px-3 py-3">
+        <button type="button" data-manager-case="${item.id}" class="manager-case-select rounded-lg border ${selected ? "border-indigo-300 bg-white text-indigo-700" : "border-slate-200 bg-white text-slate-600"} px-3 py-2 text-xs font-semibold hover:border-indigo-200 hover:bg-indigo-50">${selected ? "Selectionne" : "Choisir"}</button>
+      </td>
+      <td class="px-3 py-3">
+        <p class="font-semibold text-slate-900">#${String(item.id).padStart(2, "0")} - ${item.afnorCase}</p>
+        <p class="mt-1 max-w-xl text-xs leading-5 text-slate-600">${item.title}</p>
+      </td>
+      <td class="px-3 py-3">
+        <span class="inline-flex rounded-md border px-2 py-1 text-xs font-semibold ${toneFor(item.category)}">${categories.find((cat) => cat.id === item.category)?.label || item.category}</span>
+      </td>
+      <td class="px-3 py-3">
+        <select data-case-color="${item.id}" class="case-color-select rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+          ${caseColorOptions.map((option) => `<option value="${option.id}" ${override.tone === option.id ? "selected" : ""}>${option.label}</option>`).join("")}
+        </select>
+      </td>
+      <td class="px-3 py-3">
+        <select data-case-applicability="${item.id}" class="case-applicability-select rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+          ${caseApplicabilityOptions.map((option) => `<option value="${option.id}" ${override.applicability === option.id ? "selected" : ""}>${option.label}</option>`).join("")}
+        </select>
+      </td>
+      <td class="px-3 py-3">
+        <button type="button" data-manager-case="${item.id}" class="manager-case-select max-w-48 truncate rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-left text-xs font-semibold text-slate-600 hover:border-indigo-200 hover:bg-indigo-50">
+          ${override.note ? escapeHtml(override.note) : "Ajouter une note"}
+        </button>
+      </td>
+    </tr>
+  `;
+}
+
+function renderApplicabilityBadge(applicability, extraClass = "") {
+  const map = {
+    applicable: ["Applicable entreprise", "border-emerald-200 bg-emerald-50 text-emerald-700"],
+    review: ["A verifier", "border-amber-200 bg-amber-50 text-amber-700"],
+    "not-applicable": ["Non coche", "border-slate-200 bg-slate-50 text-slate-500"]
+  };
+  const [label, classes] = map[applicability] || map["not-applicable"];
+  return `<span class="${extraClass} inline-flex rounded-md border px-2 py-1 text-[11px] font-semibold ${classes}">${label}</span>`;
+}
+
+function escapeHtml(value = "") {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[char]);
 }
 
 function renderDatasets() {
@@ -420,13 +641,13 @@ function buildContextModal(selectedContext) {
   `;
 }
 
-function buildCaseModal(selectedCase) {
+function buildCaseModal(selectedCase, state) {
   if (!selectedCase) return `<div id="caseModal" class="hidden"></div>`;
-  const req = requirementsForCase(selectedCase);
   const table = tableRowsForCase(selectedCase);
+  const hierarchy = hierarchyForCase(selectedCase);
   const sourceReferences = allCaseSourceReferences(selectedCase);
   const primaryReference = primaryReferenceForCase(selectedCase);
-  const annexAReference = annexAReferenceForCase(selectedCase);
+  const override = caseOverrideFor(selectedCase, state.caseOverrides);
   return `
     <div id="caseModal" class="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/45 p-4 backdrop-blur-sm">
       <article class="max-h-[92vh] w-full max-w-5xl overflow-auto rounded-xl border border-slate-200 bg-white shadow-2xl">
@@ -450,20 +671,10 @@ function buildCaseModal(selectedCase) {
           </section>
           <section><h3 class="mb-2 text-lg font-semibold text-slate-900">Explication (synthèse)</h3><p class="text-sm leading-relaxed text-slate-700">${selectedCase.description}</p></section>
           <section class="rounded-xl border border-indigo-200 bg-indigo-50 p-4"><h3 class="mb-2 text-lg font-semibold text-indigo-900">Exemple concret (illustratif)</h3><p class="text-sm leading-relaxed text-indigo-800">${selectedCase.example}</p></section>
+          ${renderCompanyCaseNoteSection(override)}
           ${renderPrimaryReferenceSection(primaryReference)}
-          ${renderAnnexASection(annexAReference)}
-          <section>
-            <div class="mb-3 flex items-center justify-between gap-3">
-              <h3 class="text-lg font-semibold text-slate-900">BT / hierarchie des donnees</h3>
-              <button data-table-case="${selectedCase.id}" class="table-entry rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 hover:border-indigo-200 hover:bg-indigo-50">Ouvrir la table officielle (${table.rows.length})</button>
-            </div>
-            <div class="grid gap-3 sm:grid-cols-2">
-              <div class="rounded-xl border border-slate-200 bg-slate-50 p-3"><p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">En-tete</p><ul class="list-disc space-y-1 pl-4 text-sm text-slate-700">${listHtml(req.header)}</ul></div>
-              <div class="rounded-xl border border-slate-200 bg-slate-50 p-3"><p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Parties</p><ul class="list-disc space-y-1 pl-4 text-sm text-slate-700">${listHtml(req.parties)}</ul></div>
-              <div class="rounded-xl border border-slate-200 bg-slate-50 p-3"><p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Lignes</p><ul class="list-disc space-y-1 pl-4 text-sm text-slate-700">${listHtml(req.lines)}</ul></div>
-              <div class="rounded-xl border border-slate-200 bg-slate-50 p-3"><p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">TVA / paiement / references</p><ul class="list-disc space-y-1 pl-4 text-sm text-slate-700">${listHtml([...req.taxAndReferences, ...req.payment])}</ul></div>
-            </div>
-          </section>
+          ${renderWikiCaseSection(selectedCase, primaryReference)}
+          ${renderCaseHierarchySection(hierarchy, table, selectedCase)}
           <section>
             <h3 class="mb-2 text-lg font-semibold text-slate-900">Impact ERP</h3>
             <div class="grid gap-3 sm:grid-cols-2">

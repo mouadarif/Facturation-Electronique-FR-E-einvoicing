@@ -38,10 +38,43 @@ Le cas 5 couvre une avance de frais où **le collaborateur paie**, mais la **fac
 - Prévoir une **adresse de facturation électronique dédiée** (optionnel) pour faciliter tri et rapprochement.
 - Rattacher la facture au justificatif interne (matricule/identifiant interne) en évitant les données personnelles exposées.
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 5** | Le collaborateur paie, mais la facture est au nom de l'entreprise | **B2B e-invoicing via PA** | L'entreprise est l'acheteur juridique; le collaborateur avance seulement les frais. |
+| **Cas 6** | Le collaborateur paie, et le ticket/facture est a son nom | **B2C / e-reporting cote vendeur** | L'entreprise ne recoit pas de facture via PA; elle traite une note de frais interne. |
+| **Cas 7** | Achat avec carte logee / carte d'achat, facture au nom de l'entreprise | **B2B e-invoicing via PA** | La facture est deja payee par un moyen de paiement de l'entreprise. |
+
+### Cas 5 - frais collaborateur avec facture entreprise
+
+```text
+Facture au nom de l'entreprise
+Paiement initial par le collaborateur
+Remboursement ensuite par l'entreprise
+```
+
+Exemple :
+
+```text
+Un salarie Scafruit paie un hotel avec sa carte personnelle,
+mais la facture est au nom de Scafruit.
+```
+
+Consequence :
+
+```text
+VENDEUR -> PA-E -> PA-R de l'entreprise
+```
+
+La facture est bien B2B. La TVA peut suivre la logique normale de deduction si les autres conditions sont respectees.
+
+Difference centrale : le collaborateur n'est pas l'acheteur juridique; il avance seulement le paiement. Le critere decisif reste **le nom porte par la facture**.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 5.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=46` : Annexe A v1.3, cas n°5.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=46` : Annexe A v1.3, cas n°5.
 
 ## Pages liées
 

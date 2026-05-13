@@ -216,13 +216,24 @@ Deux scénarios “se ressemblent” en surface (argent reçu avant livraison), 
 - Declarer deux fois la TVA : une premiere fois sur l'acompte, puis une seconde fois sur le total final sans deduction.
 - Confondre "deja payee" avec "payable immediatement" : une facture payable immediatement n'est pas forcement deja payee.
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 1** | Facture multi-commande / multi-livraison | **B2B e-invoicing via PA** | Complexite de rapprochement commercial et logistique. |
+| **Cas 2** | Facture deja payee a l'emission | **B2B e-invoicing via PA** | Le paiement existe deja; le net a payer peut etre nul. |
+| **Cas 3** | Facture a payer par un tiers payeur connu | **B2B e-invoicing via PA** | Le payeur est distinct, mais le paiement n'est pas necessairement deja realise. |
+| **Cas 7** | Achat paye par carte logee | **B2B e-invoicing via PA** | Variante pratique de facture deja payee, avec moyen de paiement de l'entreprise. |
+
+Difference centrale : le cas 2 repond a la question **la facture est-elle deja soldee ?**. Le cas 3 repond a **qui paiera ?**. Le cas 7 repond a **avec quel moyen de paiement entreprise la facture a-t-elle deja ete payee ?**.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 2, "Facture deja payee par l'acheteur ou un tiers payeur au moment de l'emission".
 - `juridique/02_DEFINITIONS_NOTIONS_REFORME.md` : definition de l'acompte.
 - `src/data/officialAnnexData.js` : cadres `B2`, `S2`, `M2`, `B4`, `S4`, `M4` et types de factures d'acompte.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=39` : Annexe A v1.3, cas n°2 facture déjà payée.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=81` : cas AFNOR facture d'acompte et facture definitive apres acompte.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=39` : Annexe A v1.3, cas n°2 facture déjà payée.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=81` : cas AFNOR facture d'acompte et facture definitive apres acompte.
 - `docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=31` : regles liees a la date d'echeance et aux factures deja payees / acomptes.
 
 ## Pages liees

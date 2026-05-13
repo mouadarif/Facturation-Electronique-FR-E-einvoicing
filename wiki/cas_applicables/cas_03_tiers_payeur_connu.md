@@ -52,11 +52,21 @@ Le cas 3 couvre une facture B2B **adressée à l’acheteur**, mais dont le **pa
 **Ce qui ferait basculer vers Cas 2**:
 - si, au moment de l’émission, le paiement a déjà eu lieu et la facture doit être déposée comme **déjà payée** (montant à payer nul, cohérence montants/dates).
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 2** | Facture deja payee | **B2B e-invoicing via PA** | Le paiement est deja intervenu. |
+| **Cas 3** | Tiers payeur connu au moment de la facturation | **B2B e-invoicing via PA** | Le tiers payeur est identifie des l'emission, mais l'acheteur reste l'acheteur juridique. |
+| **Cas 4** | Prise en charge partielle par un tiers | **B2B e-invoicing via PA** | Le tiers ne couvre qu'une partie du montant; il faut suivre plusieurs parts de paiement. |
+
+Difference centrale : le cas 3 separe l'acheteur juridique du payeur operationnel. Le cas 4 ajoute une ventilation entre la part acheteur et la part tiers.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 3.
 - `juridique/03_NOTIONS_PAR_CAS_REFORME.md` : repères “tiers payeur” et cas proches.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=41` : Annexe A v1.3, cas n°3.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=41` : Annexe A v1.3, cas n°3.
 
 ## Pages liées
 

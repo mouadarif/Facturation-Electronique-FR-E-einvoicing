@@ -1,0 +1,107 @@
+{
+  "caseId": 19,
+  "afnorCase": "Cas n°22a",
+  "title": "Facture payée avec escompte - prestations de services avec TVA due à l'encaissement",
+  "sourceKind": "status",
+  "generatedFrom": "src/data/officialAnnexData.js",
+  "summary": {
+    "rowCount": 11,
+    "sourceLabel": "Annexe 2 - Statuts cycle de vie"
+  },
+  "hierarchies": [
+    {
+      "id": "statuses",
+      "label": "Statuts cycle de vie",
+      "format": "json",
+      "root": {
+        "name": "Cycle de vie",
+        "count": 11,
+        "children": [
+          {
+            "name": "facture_flux2",
+            "count": 5,
+            "children": [],
+            "examples": [
+              {
+                "id": "200",
+                "label": "Déposée",
+                "row": 4
+              },
+              {
+                "id": "210",
+                "label": "Refusée",
+                "row": 5
+              },
+              {
+                "id": "212",
+                "label": "Encaissée",
+                "row": 6
+              },
+              {
+                "id": "213",
+                "label": "Rejetée",
+                "row": 7
+              },
+              {
+                "id": "",
+                "label": ":",
+                "row": 16
+              }
+            ]
+          },
+          {
+            "name": "donnees_obligatoires_flux1",
+            "count": 2,
+            "children": [],
+            "examples": [
+              {
+                "id": "250",
+                "label": "Déposée",
+                "row": 4
+              },
+              {
+                "id": "251",
+                "label": "Rejetée",
+                "row": 5
+              }
+            ]
+          },
+          {
+            "name": "ereporting_in_flux10",
+            "count": 2,
+            "children": [],
+            "examples": [
+              {
+                "id": "300",
+                "label": "Déposée",
+                "row": 4
+              },
+              {
+                "id": "301",
+                "label": "Rejetée",
+                "row": 5
+              }
+            ]
+          },
+          {
+            "name": "ereporting_re_flux10",
+            "count": 2,
+            "children": [],
+            "examples": [
+              {
+                "id": "300",
+                "label": "Déposée",
+                "row": 4
+              },
+              {
+                "id": "301",
+                "label": "Rejetée",
+                "row": 5
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

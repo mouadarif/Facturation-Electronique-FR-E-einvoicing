@@ -109,13 +109,22 @@ La bonne lecture du cas consiste donc a distinguer le regroupement commercial de
 - Si la TVA est a l'encaissement, conserver la date et le montant effectivement encaisses.
 - En cas d'encaissement partiel, transmettre uniquement le montant encaisse avec la ventilation attendue.
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 1** | Une facture regroupe plusieurs commandes ou livraisons | **B2B e-invoicing via PA** | Le sujet principal est la granularite des references commande/livraison, souvent au niveau ligne. |
+| **Cas 2** | La facture est deja payee au moment de l'emission | **B2B e-invoicing via PA** | Le sujet principal est le montant deja paye et le net a payer, pas le regroupement logistique. |
+
+Difference centrale : dans le cas 1, on cherche a rattacher correctement plusieurs operations commerciales a une facture. Dans le cas 2, on cherche a indiquer correctement qu'une operation est deja soldee.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 1, "Multi-commande / multi-livraison".
 - `juridique/02_DEFINITIONS_NOTIONS_REFORME.md` : definitions "TVA exigible a l'encaissement", "Option pour les debits" et "E-reporting paiement".
 - `juridique/03_NOTIONS_PAR_CAS_REFORME.md` : matrice des notions par cas.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=39` : Annexe A v1.3, cas n°1 multi-commande / multi-livraison.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=34` : exemple de facture deja payee et regle liee a `S1`, `S2`, `BT-8` et TVA a l'encaissement.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=39` : Annexe A v1.3, cas n°1 multi-commande / multi-livraison.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=34` : exemple de facture deja payee et regle liee a `S1`, `S2`, `BT-8` et TVA a l'encaissement.
 - `docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=17` : role de `BT-8` pour l'evenement d'exigibilite de la TVA.
 - `docs_tech/e_reporting_donnees_paiement.pdf#page=1` : donnees de paiement a transmettre lorsque la TVA est exigible a l'encaissement.
 

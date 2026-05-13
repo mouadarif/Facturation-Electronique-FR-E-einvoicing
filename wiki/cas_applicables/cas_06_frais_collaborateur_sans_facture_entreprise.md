@@ -31,10 +31,52 @@ L’Annexe A indique qu’une facture B2B peut être émise dans un second temps
 - **Scénario Cas 6**: le collaborateur règle un repas et repart avec un ticket/facture à son nom. Le vendeur déclare la vente en e-reporting B2C. Le collaborateur demande ensuite un remboursement interne.
 - **Scénario Cas 5**: le collaborateur demande une facture au nom de l’entreprise (SIREN + adresse de facturation électronique). La facture est reçue en e-invoicing, et le collaborateur est remboursé via note de frais.
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 5** | Le collaborateur paie, mais la facture est au nom de l'entreprise | **B2B e-invoicing via PA** | L'entreprise est l'acheteur juridique; le collaborateur avance seulement les frais. |
+| **Cas 6** | Le collaborateur paie, et le ticket/facture est a son nom | **B2C / e-reporting cote vendeur** | L'entreprise ne recoit pas de facture via PA; elle traite une note de frais interne. |
+| **Cas 7** | Achat avec carte logee / carte d'achat, facture au nom de l'entreprise | **B2B e-invoicing via PA** | La facture est deja payee par un moyen de paiement de l'entreprise. |
+
+### Cas 6 - ticket ou facture au nom du collaborateur
+
+```text
+Facture/ticket au nom du collaborateur
+Paiement par le collaborateur
+Remboursement interne par l'entreprise
+```
+
+Exemple :
+
+```text
+Un salarie paie un restaurant.
+Le ticket est a son nom ou sans nom d'entreprise.
+```
+
+Consequence cote vendeur :
+
+```text
+Pas de facture B2B vers l'entreprise
+Declaration B2C / e-reporting
+```
+
+Consequence cote entreprise :
+
+```text
+Pas de reception via PA
+Traitement comptable interne en note de frais
+TVA potentiellement problematique
+```
+
+Nuance TVA : l'entreprise peut vouloir deduire une TVA alors que la facture ne la designe pas comme acheteur. C'est pour cela que la deductibilite doit etre clarifiee au cas reel.
+
+Difference centrale : si la facture est au nom de l'entreprise, on revient vers le cas 5 ou 7; si elle est au nom du collaborateur, ce n'est pas une facture B2B recue par l'entreprise.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 6.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=47` : Annexe A v1.3, cas n°6.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=47` : Annexe A v1.3, cas n°6.
 
 ## Pages liées
 

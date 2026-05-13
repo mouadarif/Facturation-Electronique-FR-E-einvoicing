@@ -1,0 +1,644 @@
+{
+  "caseId": 18,
+  "afnorCase": "Cas n°20 et n°21",
+  "title": "Facture d'acompte après acompte payé ou à payer puis facture définitive / finale",
+  "sourceKind": "invoice",
+  "generatedFrom": "src/data/officialAnnexData.js",
+  "summary": {
+    "rowCount": 97,
+    "sourceLabel": "Annexe 1 - Flux 1 e-invoicing"
+  },
+  "hierarchies": [
+    {
+      "id": "ubl",
+      "label": "UBL XML",
+      "format": "xml",
+      "root": {
+        "name": "UBL XML",
+        "count": 88,
+        "children": [
+          {
+            "name": "Invoice",
+            "count": 88,
+            "children": [
+              {
+                "name": "CreditNote",
+                "count": 70,
+                "children": [
+                  {
+                    "name": "cac:TaxTotal",
+                    "count": 12,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-23",
+                        "label": "VENTILATION DE LA TVA",
+                        "cardinality": "1..n",
+                        "row": 69
+                      },
+                      {
+                        "id": "BT-110",
+                        "label": "Montant total de TVA de la facture",
+                        "cardinality": "1..1",
+                        "row": 65
+                      },
+                      {
+                        "id": "BT-110-1",
+                        "label": "Code devise",
+                        "cardinality": "1..1",
+                        "row": 66
+                      }
+                    ]
+                  },
+                  {
+                    "name": "cac:Delivery",
+                    "count": 10,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-13",
+                        "label": "INFORMATIONS DE LIVRAISON",
+                        "cardinality": "0..1",
+                        "row": 40
+                      },
+                      {
+                        "id": "BG-15",
+                        "label": "ADRESSE DE LIVRAISON",
+                        "cardinality": "0..1",
+                        "row": 45
+                      },
+                      {
+                        "id": "BT-165",
+                        "label": "Adresse de livraison - Ligne 3",
+                        "cardinality": "0..1",
+                        "row": 48
+                      }
+                    ]
+                  },
+                  {
+                    "name": "cac:AccountingSupplierParty",
+                    "count": 9,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-4",
+                        "label": "VENDEUR",
+                        "cardinality": "1..1",
+                        "row": 21
+                      },
+                      {
+                        "id": "BG-5",
+                        "label": "ADRESSE POSTALE DU VENDEUR",
+                        "cardinality": "1..1",
+                        "row": 28
+                      },
+                      {
+                        "id": "BT-29d",
+                        "label": "Identifiant du vendeur (Assujetti unique)",
+                        "cardinality": "0..1",
+                        "row": 22
+                      }
+                    ]
+                  },
+                  {
+                    "name": "cac:AllowanceCharge",
+                    "count": 8,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BT-102",
+                        "label": "Code de type de TVA des charges ou frais au niveau du document",
+                        "cardinality": "1..1",
+                        "row": 60
+                      },
+                      {
+                        "id": "BT-102-0",
+                        "label": "Qualifiant du code de type de TVA des charges ou frais au niveau du document",
+                        "cardinality": "1..1",
+                        "row": 61
+                      },
+                      {
+                        "id": "BT-103",
+                        "label": "Taux de TVA des charges ou frai au niveau du document",
+                        "cardinality": "0..1",
+                        "row": 62
+                      }
+                    ]
+                  },
+                  {
+                    "name": "cac:AccountingCustomerParty",
+                    "count": 7,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-7",
+                        "label": "ACHETEUR",
+                        "cardinality": "1..1",
+                        "row": 30
+                      },
+                      {
+                        "id": "BG-8",
+                        "label": "ADRESSE POSTALE DE L'ACHETEUR",
+                        "cardinality": "1..1",
+                        "row": 35
+                      },
+                      {
+                        "id": "BT-47",
+                        "label": "Numéro de SIREN",
+                        "cardinality": "1..1",
+                        "row": 31
+                      }
+                    ]
+                  },
+                  {
+                    "name": "cac:InvoicePeriod",
+                    "count": 4,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-14",
+                        "label": "PERIODE DE FACTURATION",
+                        "cardinality": "0..1",
+                        "row": 42
+                      },
+                      {
+                        "id": "BT-73",
+                        "label": "Date de début de période de facturation",
+                        "cardinality": "0..1",
+                        "row": 43
+                      },
+                      {
+                        "id": "BT-74",
+                        "label": "Date de fin de période de facturation",
+                        "cardinality": "0..1",
+                        "row": 44
+                      }
+                    ]
+                  },
+                  {
+                    "name": "cac:BillingReference",
+                    "count": 3,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-3",
+                        "label": "RÉFÉRENCE À UNE FACTURE ANTÉRIEURE",
+                        "cardinality": "0..n",
+                        "row": 18
+                      },
+                      {
+                        "id": "BT-25",
+                        "label": "Numéro de la facture antérieure",
+                        "cardinality": "1..1",
+                        "row": 19
+                      },
+                      {
+                        "id": "BT-26",
+                        "label": "Date d'émission de facture antérieure",
+                        "cardinality": "0..1",
+                        "row": 20
+                      }
+                    ]
+                  },
+                  {
+                    "name": "cac:TaxRepresentativeParty",
+                    "count": 3,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-11",
+                        "label": "REPRÉSENTANT FISCAL DU VENDEUR",
+                        "cardinality": "0..1",
+                        "row": 37
+                      },
+                      {
+                        "id": "BT-63",
+                        "label": "Identifiant à la TVA du représentant fiscal du vendeur",
+                        "cardinality": "1..1",
+                        "row": 38
+                      },
+                      {
+                        "id": "BT-63-0",
+                        "label": "Identifiant du schéma de l'identifiant TVA du représentant fiscal",
+                        "cardinality": "1..1",
+                        "row": 39
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Autres noeuds",
+                    "count": 13,
+                    "children": [],
+                    "examples": []
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "BG-1",
+                    "label": "NOTE DE FACTURE",
+                    "cardinality": "0..n",
+                    "row": 12
+                  },
+                  {
+                    "id": "BG-11",
+                    "label": "REPRÉSENTANT FISCAL DU VENDEUR",
+                    "cardinality": "0..1",
+                    "row": 37
+                  },
+                  {
+                    "id": "BG-13",
+                    "label": "INFORMATIONS DE LIVRAISON",
+                    "cardinality": "0..1",
+                    "row": 40
+                  }
+                ]
+              },
+              {
+                "name": "cac:InvoiceLine",
+                "count": 18,
+                "children": [
+                  {
+                    "name": "CreditNote",
+                    "count": 18,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-25",
+                        "label": "LIGNE DE FACTURE",
+                        "cardinality": "1..n",
+                        "row": 77
+                      },
+                      {
+                        "id": "BG-26",
+                        "label": "PERIODE DE FACTURATION D'UNE LIGNE",
+                        "cardinality": "0..1",
+                        "row": 98
+                      },
+                      {
+                        "id": "BG-27",
+                        "label": "REMISE DE LIGNE DE FACTURE",
+                        "cardinality": "0..n",
+                        "row": 101
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "BG-25",
+                    "label": "LIGNE DE FACTURE",
+                    "cardinality": "1..n",
+                    "row": 77
+                  },
+                  {
+                    "id": "BG-26",
+                    "label": "PERIODE DE FACTURATION D'UNE LIGNE",
+                    "cardinality": "0..1",
+                    "row": 98
+                  },
+                  {
+                    "id": "BG-27",
+                    "label": "REMISE DE LIGNE DE FACTURE",
+                    "cardinality": "0..n",
+                    "row": 101
+                  }
+                ]
+              }
+            ],
+            "examples": [
+              {
+                "id": "BG-1",
+                "label": "NOTE DE FACTURE",
+                "cardinality": "0..n",
+                "row": 12
+              },
+              {
+                "id": "BG-11",
+                "label": "REPRÉSENTANT FISCAL DU VENDEUR",
+                "cardinality": "0..1",
+                "row": 37
+              },
+              {
+                "id": "BG-13",
+                "label": "INFORMATIONS DE LIVRAISON",
+                "cardinality": "0..1",
+                "row": 40
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cii",
+      "label": "CII / Factur-X XML",
+      "format": "xml",
+      "root": {
+        "name": "CII / Factur-X XML",
+        "count": 97,
+        "children": [
+          {
+            "name": "rsm:CrossIndustryInvoice",
+            "count": 97,
+            "children": [
+              {
+                "name": "rsm:SupplyChainTradeTransaction",
+                "count": 87,
+                "children": [
+                  {
+                    "name": "ram:ApplicableHeaderTradeSettlement",
+                    "count": 37,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-14",
+                        "label": "PERIODE DE FACTURATION",
+                        "cardinality": "0..1",
+                        "row": 42
+                      },
+                      {
+                        "id": "BG-20",
+                        "label": "REMISES AU NIVEAU DU DOCUMENT",
+                        "cardinality": "0..n",
+                        "row": 53
+                      },
+                      {
+                        "id": "BG-21",
+                        "label": "CHARGES OU FRAIS AU NIVEAU DU DOCUMENT",
+                        "cardinality": "0..n",
+                        "row": 58
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ram:IncludedSupplyChainTradeLineItem",
+                    "count": 20,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-25",
+                        "label": "LIGNE DE FACTURE",
+                        "cardinality": "1..n",
+                        "row": 77
+                      },
+                      {
+                        "id": "BG-26",
+                        "label": "PERIODE DE FACTURATION D'UNE LIGNE",
+                        "cardinality": "0..1",
+                        "row": 98
+                      },
+                      {
+                        "id": "BG-27",
+                        "label": "REMISE DE LIGNE DE FACTURE",
+                        "cardinality": "0..n",
+                        "row": 101
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ram:ApplicableHeaderTradeAgreement",
+                    "count": 19,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-11",
+                        "label": "REPRÉSENTANT FISCAL DU VENDEUR",
+                        "cardinality": "0..1",
+                        "row": 37
+                      },
+                      {
+                        "id": "BG-4",
+                        "label": "VENDEUR",
+                        "cardinality": "1..1",
+                        "row": 21
+                      },
+                      {
+                        "id": "BG-5",
+                        "label": "ADRESSE POSTALE DU VENDEUR",
+                        "cardinality": "1..1",
+                        "row": 28
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ram:ApplicableHeaderTradeDelivery",
+                    "count": 11,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-13",
+                        "label": "INFORMATIONS DE LIVRAISON",
+                        "cardinality": "0..1",
+                        "row": 40
+                      },
+                      {
+                        "id": "BG-15",
+                        "label": "ADRESSE DE LIVRAISON",
+                        "cardinality": "0..1",
+                        "row": 45
+                      },
+                      {
+                        "id": "BT-165",
+                        "label": "Adresse de livraison - Ligne 3",
+                        "cardinality": "0..1",
+                        "row": 48
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "BG-11",
+                    "label": "REPRÉSENTANT FISCAL DU VENDEUR",
+                    "cardinality": "0..1",
+                    "row": 37
+                  },
+                  {
+                    "id": "BG-13",
+                    "label": "INFORMATIONS DE LIVRAISON",
+                    "cardinality": "0..1",
+                    "row": 40
+                  },
+                  {
+                    "id": "BG-14",
+                    "label": "PERIODE DE FACTURATION",
+                    "cardinality": "0..1",
+                    "row": 42
+                  }
+                ]
+              },
+              {
+                "name": "rsm:ExchangedDocument",
+                "count": 7,
+                "children": [
+                  {
+                    "name": "ram:IncludedNote",
+                    "count": 3,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BG-1",
+                        "label": "NOTE DE FACTURE",
+                        "cardinality": "0..n",
+                        "row": 12
+                      },
+                      {
+                        "id": "BT-21",
+                        "label": "Code du sujet de la note de facture",
+                        "cardinality": "0..1",
+                        "row": 13
+                      },
+                      {
+                        "id": "BT-22",
+                        "label": "Note de facture",
+                        "cardinality": "1..1",
+                        "row": 14
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ram:IssueDateTime",
+                    "count": 2,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BT-2",
+                        "label": "Date d'émission facture initiale / facture rectificative",
+                        "cardinality": "1..1",
+                        "row": 7
+                      },
+                      {
+                        "id": "BT-2-1",
+                        "label": "Format date",
+                        "cardinality": "1..1",
+                        "row": 8
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ram:ID",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BT-1",
+                        "label": "Numéro de facture",
+                        "cardinality": "1..1",
+                        "row": 6
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ram:TypeCode",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BT-3",
+                        "label": "Code de type de facture",
+                        "cardinality": "1..1",
+                        "row": 8
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "BG-1",
+                    "label": "NOTE DE FACTURE",
+                    "cardinality": "0..n",
+                    "row": 12
+                  },
+                  {
+                    "id": "BT-1",
+                    "label": "Numéro de facture",
+                    "cardinality": "1..1",
+                    "row": 6
+                  },
+                  {
+                    "id": "BT-2",
+                    "label": "Date d'émission facture initiale / facture rectificative",
+                    "cardinality": "1..1",
+                    "row": 7
+                  }
+                ]
+              },
+              {
+                "name": "rsm:ExchangedDocumentContext",
+                "count": 3,
+                "children": [
+                  {
+                    "name": "ram:BusinessProcessSpecifiedDocumentContextParameter",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BT-23",
+                        "label": "Type de processus métier (cadre de facturation)",
+                        "cardinality": "1..1",
+                        "row": 16
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ram:GuidelineSpecifiedDocumentContextParameter",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "BT-24",
+                        "label": "Type de profil (e-invoicing, e-reporting, facture etc..)",
+                        "cardinality": "1..1",
+                        "row": 17
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "BG-2",
+                    "label": "CONTROLE DU PROCESSUS",
+                    "cardinality": "1..1",
+                    "row": 15
+                  },
+                  {
+                    "id": "BT-23",
+                    "label": "Type de processus métier (cadre de facturation)",
+                    "cardinality": "1..1",
+                    "row": 16
+                  },
+                  {
+                    "id": "BT-24",
+                    "label": "Type de profil (e-invoicing, e-reporting, facture etc..)",
+                    "cardinality": "1..1",
+                    "row": 17
+                  }
+                ]
+              }
+            ],
+            "examples": [
+              {
+                "id": "BG-1",
+                "label": "NOTE DE FACTURE",
+                "cardinality": "0..n",
+                "row": 12
+              },
+              {
+                "id": "BG-11",
+                "label": "REPRÉSENTANT FISCAL DU VENDEUR",
+                "cardinality": "0..1",
+                "row": 37
+              },
+              {
+                "id": "BG-13",
+                "label": "INFORMATIONS DE LIVRAISON",
+                "cardinality": "0..1",
+                "row": 40
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

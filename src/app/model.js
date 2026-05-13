@@ -5,10 +5,24 @@ import { primaryReferences } from "../data/primaryReferences.js";
 import { annexAReferences } from "../data/annexAReferences.js";
 import { officialAnnexData } from "../data/officialAnnexData.js";
 import { applicableContextCases } from "../data/companyContext.js";
+import { caseHierarchies } from "../data/caseHierarchies.js";
 
 const sourceById = new Map(sources.map((source) => [source.id, source]));
 const sourceReferenceById = new Map(sourceReferenceIndex.map((source) => [source.id, source]));
 const categoriesWithoutAll = categories.filter((cat) => cat.id !== "all");
+const defaultApplicableCaseIds = new Set(applicableContextCases.flatMap((item) => item.matchedCaseIds || []));
+const wikiPathsByCaseId = {
+  1: "wiki/cas_applicables/cas_01_multi_commande_multi_livraison.md",
+  2: "wiki/cas_applicables/cas_02_facture_deja_payee.md",
+  3: "wiki/cas_applicables/cas_03_tiers_payeur_connu.md",
+  4: "wiki/cas_applicables/cas_04_prise_en_charge_partielle.md",
+  5: "wiki/cas_applicables/cas_05_frais_collaborateur_facture_entreprise.md",
+  6: "wiki/cas_applicables/cas_06_frais_collaborateur_sans_facture_entreprise.md",
+  7: "wiki/cas_applicables/cas_07_carte_logee.md",
+  8: "wiki/cas_applicables/cas_08_09_10_paiement_tiers_affacturage.md",
+  9: "wiki/cas_applicables/cas_09_facture_traitee_par_tiers.md",
+  10: "wiki/cas_applicables/cas_10_intermediaire_transparent_acheteur.md"
+};
 
 export const initialState = {
   activeView: "library",
@@ -16,7 +30,9 @@ export const initialState = {
   query: "",
   selectedCaseId: null,
   selectedTableCaseId: null,
-  selectedContextId: null
+  selectedContextId: null,
+  managerCaseId: 1,
+  caseOverrides: {}
 };
 
 export function normalize(value) {
@@ -28,6 +44,57 @@ export function normalize(value) {
 
 export function toneFor(categoryId) {
   const tone = categories.find((cat) => cat.id === categoryId)?.tone || "neutral";
+  return toneClass(tone);
+}
+
+export const caseColorOptions = [
+  { id: "category", label: "Famille" },
+  { id: "neutral", label: "Neutre" },
+  { id: "indigo", label: "Indigo" },
+  { id: "teal", label: "Sarcelle" },
+  { id: "green", label: "Vert" },
+  { id: "amber", label: "Ambre" },
+  { id: "rose", label: "Rose" },
+  { id: "blue", label: "Bleu" }
+];
+
+export const caseApplicabilityOptions = [
+  { id: "not-applicable", label: "Non coche" },
+  { id: "applicable", label: "Applicable" },
+  { id: "review", label: "A verifier" }
+];
+
+export function toneForCase(item, overrides = {}) {
+  const override = overrides[item.id]?.tone;
+  if (override && override !== "category") return toneClass(override);
+  return toneFor(item.category);
+}
+
+export function caseApplicabilityFor(item, overrides = {}) {
+  const override = overrides[item.id] || {};
+  if (caseApplicabilityOptions.some((option) => option.id === override.applicability)) {
+    return override.applicability;
+  }
+  if (typeof override.applicable === "boolean") {
+    return override.applicable ? "applicable" : "not-applicable";
+  }
+  return defaultApplicableCaseIds.has(item.id) ? "applicable" : "not-applicable";
+}
+
+export function isCaseApplicableToCompany(item, overrides = {}) {
+  return caseApplicabilityFor(item, overrides) === "applicable";
+}
+
+export function caseOverrideFor(item, overrides = {}) {
+  const override = overrides[item.id] || {};
+  return {
+    tone: override.tone || "category",
+    applicability: caseApplicabilityFor(item, overrides),
+    note: typeof override.note === "string" ? override.note : ""
+  };
+}
+
+function toneClass(tone) {
   const map = {
     indigo: "bg-indigo-100 text-indigo-700 border-indigo-200",
     teal: "bg-teal-100 text-teal-700 border-teal-200",
@@ -105,6 +172,11 @@ export function annexAReferenceForCase(item) {
   return item ? annexAReferences[item.id] || null : null;
 }
 
+export function wikiPathForCase(item) {
+  if (!item) return null;
+  return wikiPathsByCaseId[item.id] || `wiki/cas_applicables/cas_${String(item.id).padStart(2, "0")}.md`;
+}
+
 export function primaryReferenceForContext(contextItem) {
   const firstCase = casesByIds(contextItem?.matchedCaseIds || [])[0];
   return primaryReferenceForCase(firstCase);
@@ -137,10 +209,14 @@ export function tableKindForCase(item) {
 
 export function tableRowsForCase(item) {
   const kind = tableKindForCase(item);
-  if (kind === "annuaire") return { kind, rows: officialAnnexData.annuaire.slice(0, 20) };
-  if (kind === "status") return { kind, rows: officialAnnexData.statuses.slice(0, 20) };
-  if (kind === "reporting") return { kind, rows: officialAnnexData.reporting.slice(0, 20) };
-  return { kind, rows: officialAnnexData.invoice.slice(0, 20) };
+  if (kind === "annuaire") return { kind, rows: officialAnnexData.annuaire };
+  if (kind === "status") return { kind, rows: officialAnnexData.statuses };
+  if (kind === "reporting") return { kind, rows: officialAnnexData.reporting };
+  return { kind, rows: officialAnnexData.invoice };
+}
+
+export function hierarchyForCase(item) {
+  return item ? caseHierarchies[item.id] || null : null;
 }
 
 export function listHtml(items) {

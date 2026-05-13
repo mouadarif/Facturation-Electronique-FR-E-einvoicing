@@ -46,10 +46,21 @@ Le vendeur émet la facture “classique” (bénéficiaire = vendeur), puis cè
 
 **Nuance à retenir**: le bénéficiaire était **inconnu** au moment de l’émission.
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 8** | Beneficiaire du paiement connu des l'emission, par exemple affacturage ou centralisation de tresorerie | **B2B e-invoicing via PA** | La facture peut porter les informations du beneficiaire du paiement. |
+| **Cas 9** | Un tiers intervient aussi dans la gestion operationnelle | **B2B e-invoicing via PA** | Le tiers peut etre plus qu'un beneficiaire financier. |
+| **Cas 10** | Le beneficiaire est inconnu ou change apres emission | **B2B e-invoicing + statuts** | Le changement se traite dans le cycle de vie plutot que dans la facture initiale. |
+| **Cas 11** | Un tiers recoit/traite la facture pour l'acheteur | **Routage / delegation cote acheteur** | Le tiers traite la facture mais n'est pas forcement beneficiaire du paiement. |
+
+Difference centrale : les cas 8 a 10 concernent **a qui payer**; les cas 11 et 12 concernent plutot **qui recoit ou traite** la facture pour l'acheteur.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 8 (synthèse 8 à 10).
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=50` : Annexe A v1.3, cas 8 à 10 (chapitre 3.2.9).
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=50` : Annexe A v1.3, cas 8 à 10 (chapitre 3.2.9).
 
 ## Pages liées
 

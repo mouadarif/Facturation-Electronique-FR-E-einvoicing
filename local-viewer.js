@@ -51,13 +51,53 @@ if (!safePath) {
     })
     .then((buffer) => {
       const text = new TextDecoder("utf-8", { fatal: false }).decode(buffer);
-      const pre = document.createElement("pre");
-      pre.textContent = text;
-      content.replaceChildren(pre);
+      if (isMarkdown(safePath)) {
+        renderMarkdown(text);
+      } else {
+        const pre = document.createElement("pre");
+        pre.textContent = text;
+        content.replaceChildren(pre);
+      }
     })
     .catch((error) => {
       showMessage(`Impossible d'ouvrir le document local: ${error.message}`);
     });
+}
+
+async function renderMarkdown(text) {
+  try {
+    const [{ marked }, { default: DOMPurify }] = await Promise.all([
+      import("https://cdn.jsdelivr.net/npm/marked@17.0.1/lib/marked.esm.js"),
+      import("https://cdn.jsdelivr.net/npm/dompurify@3.3.1/dist/purify.es.mjs")
+    ]);
+    marked.use({
+      gfm: true,
+      breaks: false
+    });
+    const article = document.createElement("article");
+    article.className = "markdown-body";
+    const fragment = DOMPurify.sanitize(marked.parse(text), {
+      RETURN_DOM_FRAGMENT: true,
+      USE_PROFILES: { html: true }
+    });
+    article.replaceChildren(fragment);
+    article.querySelectorAll("a[href]").forEach((link) => {
+      const href = link.getAttribute("href") || "";
+      if (href.startsWith("http://") || href.startsWith("https://")) {
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        return;
+      }
+      const resolved = resolveMarkdownLink(href);
+      if (resolved) link.href = resolved;
+    });
+    content.replaceChildren(article);
+  } catch (error) {
+    const pre = document.createElement("pre");
+    pre.textContent = text;
+    content.replaceChildren(pre);
+    console.warn("Markdown rendering unavailable, showing raw text.", error);
+  }
 }
 
 function normalizeLocalPath(value) {
@@ -78,6 +118,29 @@ function normalizeLocalPath(value) {
 
 function isPdf(value) {
   return /\.pdf$/i.test(value.split("?")[0]);
+}
+
+function isMarkdown(value) {
+  return /\.md$/i.test(value.split("?")[0]);
+}
+
+function resolveMarkdownLink(href) {
+  if (!href || href.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(href)) return "";
+  const base = safePath.split("?")[0].split("/");
+  base.pop();
+  const absolute = new URL(href, `${location.origin}${base.join("/")}/`);
+  const normalized = normalizeLocalPath(`${absolute.pathname}${absolute.search}${absolute.hash}`);
+  return normalized ? readableViewerUrl(normalized, href) : "";
+}
+
+function readableViewerUrl(pathValue, linkTitle) {
+  if (isPdf(pathValue)) {
+    return `/local-viewer.html?path=${encodeURIComponent(pathValue)}&title=${encodeURIComponent(linkTitle)}&page=${extractPage(pathValue) || 1}`;
+  }
+  if (isMarkdown(pathValue) || /\.(csv|txt|json|js)$/i.test(pathValue.split("?")[0])) {
+    return `/local-viewer.html?path=${encodeURIComponent(pathValue)}&title=${encodeURIComponent(linkTitle)}`;
+  }
+  return pathValue;
 }
 
 function extractPage(value) {

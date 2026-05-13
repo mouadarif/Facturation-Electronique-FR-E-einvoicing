@@ -44,10 +44,20 @@ Le cas 4 couvre une facture où **une partie du montant** est prise en charge pa
 **Ce qui ferait basculer vers Cas 3**:
 - si le tiers paye “pour le compte de l’acheteur” sans logique de prise en charge partielle (pas de franchise/solde séparés à tracer).
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 3** | Un tiers payeur paie la facture | **B2B e-invoicing via PA** | Le tiers peut payer le montant total. |
+| **Cas 4** | Un tiers prend seulement une partie en charge | **B2B e-invoicing via PA** | Il faut distinguer part acheteur, part tiers, franchise, encaissements et solde. |
+| **Cas 5** | Collaborateur payeur avec facture entreprise | **B2B e-invoicing via PA** | Le payeur est une personne qui avance les frais; l'acheteur juridique reste l'entreprise. |
+
+Difference centrale : le cas 4 n'est pas seulement un tiers payeur; c'est une facture dont le financement est partage.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 4.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=43` : Annexe A v1.3, cas n°4.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=43` : Annexe A v1.3, cas n°4.
 - `juridique/03_NOTIONS_PAR_CAS_REFORME.md` : repères cas proches.
 
 ## Pages liées

@@ -58,8 +58,7 @@ This catalog tracks the local documentation pack by path, category, scope, file 
 | Path | Category | Kind | Pages | Size | Definition |
 | --- | --- | --- | ---: | ---: | --- |
 | `docs_tech/afnor/README.md` | afnor | md | - | 1447 | Inventaire du dossier AFNOR generique/officiel. |
-| `docs_tech/afnor/afnor_xp_z12_012_2025.pdf` | afnor | pdf | 59 | 1625727 | Norme XP Z12-012, formats, profils et statuts de cycle de vie. |
-| `docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf` | afnor | pdf | 59 | 1621726 | Copie AFNOR XP Z12-012 extraite de l archive Cegos/COMEXA; doublon fonctionnel conserve pour tracabilite. |
+| `docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf` | afnor | pdf | 59 | 1625727 | Norme XP Z12-012, formats, profils et statuts de cycle de vie. |
 | `docs_tech/afnor/afnor_xp_z12_013_api_plateformes_dematerialisation.pdf` | afnor | pdf | 19 | 819670 | Norme XP Z12-013 sur les API entre SI entreprises et plateformes de dematerialisation. |
 | `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf` | afnor | pdf | 155 | 5155249 | Annexe A normative XP Z12-014 decrivant les principaux cas d usage B2B specifiques. |
 | `docs_tech/afnor/afnor_xp_z12_014_annexe_b_cas_usage_b2b.pdf` | afnor | pdf | 23 | 439921 | Annexe B XP Z12-014 avec exemples et cas d usage annexes. |
@@ -113,4 +112,46 @@ This catalog tracks the local documentation pack by path, category, scope, file 
 | `notes/inventory.csv` | catalog_index | csv | - | 2807 | Inventaire, catalogue ou index de liens locaux. |
 | `notes/official_artifacts_manifest_v3.csv` | catalog_index | csv | - | 1325 | Inventaire, catalogue ou index de liens locaux. |
 | `notes/official_links.csv` | catalog_index | csv | - | 6498 | Inventaire, catalogue ou index de liens locaux. |
-
+| `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf` | afnor | pdf | 155 | 5155249 | Annexe A v1.3 normative XP Z12-014 decrivant les principaux cas d usage B2B specifiques. |
+| `wiki/cas_applicables/cas_03_tiers_payeur_connu.md` | wiki_case | md | - | 3848 | Synthese locale du Cas n°3 : Facture à payer par un tiers payeur connu au moment de la facturation. |
+| `wiki/cas_applicables/cas_04_prise_en_charge_partielle.md` | wiki_case | md | - | 3122 | Synthese locale du Cas n°4 : Facture à payer par l'acheteur avec prise en charge partielle par un tiers. |
+| `wiki/cas_applicables/cas_05_frais_collaborateur_facture_entreprise.md` | wiki_case | md | - | 2690 | Synthese locale du Cas n°5 : Frais payés par des collaborateurs avec facture au nom de l'entreprise. |
+| `wiki/cas_applicables/cas_06_frais_collaborateur_sans_facture_entreprise.md` | wiki_case | md | - | 2189 | Synthese locale du Cas n°6 : Frais payés par des collaborateurs sans facture adressée à l'entreprise. |
+| `wiki/cas_applicables/cas_07_carte_logee.md` | wiki_case | md | - | 2143 | Synthese locale du Cas n°7 : Facture suite à un achat payé avec carte logée / carte d'achat. |
+| `wiki/cas_applicables/cas_08_09_10_paiement_tiers_affacturage.md` | wiki_case | md | - | 3139 | Synthese locale du Cas n°8 à n°10 : Factures à payer à un tiers : affacturage, centralisation, dépositaire ou bénéficiaire inconnu. |
+| `wiki/cas_applicables/cas_09_facture_traitee_par_tiers.md` | wiki_case | md | - | 1507 | Synthese locale du Cas n°11 : Facture devant être reçue et traitée par un tiers pour le compte de l'acheteur. |
+| `wiki/cas_applicables/cas_10_intermediaire_transparent_acheteur.md` | wiki_case | md | - | 1569 | Synthese locale du Cas n°12 : Intermédiaire transparent gestionnaire de facture pour son commettant acheteur. |
+| `wiki/cas_applicables/cas_11.md` | wiki_case | md | - | 2174 | Synthese locale du Cas n°13 : Sous-traitance avec paiement direct ou délégation de paiement. |
+| `wiki/cas_applicables/cas_12.md` | wiki_case | md | - | 2020 | Synthese locale du Cas n°14 : Co-traitance B2B. |
+| `wiki/cas_applicables/cas_13.md` | wiki_case | md | - | 2116 | Synthese locale du Cas n°15 : Facture de vente suite à commande ou paiement éventuel d'un tiers pour le compte de l'acheteur. |
+| `wiki/cas_applicables/cas_14.md` | wiki_case | md | - | 1992 | Synthese locale du Cas n°16 : Facture de débours pour remboursement de la facture de vente payée par le tiers. |
+| `wiki/cas_applicables/cas_15.md` | wiki_case | md | - | 2353 | Synthese locale du Cas n°17a / n°17b : Facture à payer à un tiers intermédiaire de paiement, avec ou sans mandat de facturation. |
+| `wiki/cas_applicables/cas_16.md` | wiki_case | md | - | 2021 | Synthese locale du Cas n°18 : Gestion des notes de débit. |
+| `wiki/cas_applicables/cas_17.md` | wiki_case | md | - | 2069 | Synthese locale du Cas n°19a / n°19b : Facture émise par un tiers facturant avec mandat et auto-facturation. |
+| `wiki/cas_applicables/cas_18.md` | wiki_case | md | - | 1800 | Synthese locale du Cas n°20 et n°21 : Facture d'acompte après acompte payé ou à payer puis facture définitive / finale. |
+| `wiki/cas_applicables/cas_19.md` | wiki_case | md | - | 2242 | Synthese locale du Cas n°22a : Facture payée avec escompte - prestations de services avec TVA due à l'encaissement. |
+| `wiki/cas_applicables/cas_20.md` | wiki_case | md | - | 2206 | Synthese locale du Cas n°22b : Facture payée avec escompte - livraisons de biens ou TVA sur les débits. |
+| `wiki/cas_applicables/cas_21.md` | wiki_case | md | - | 1972 | Synthese locale du Cas n°23 : Flux en auto-facturation entre un particulier et un professionnel. |
+| `wiki/cas_applicables/cas_22.md` | wiki_case | md | - | 1873 | Synthese locale du Cas n°24 : Gestion des arrhes. |
+| `wiki/cas_applicables/cas_23.md` | wiki_case | md | - | 1780 | Synthese locale du Cas n°25 : Gestion des bons et cartes cadeaux. |
+| `wiki/cas_applicables/cas_24.md` | wiki_case | md | - | 1791 | Synthese locale du Cas n°26 : Factures avec clause de réserve contractuelle. |
+| `wiki/cas_applicables/cas_25.md` | wiki_case | md | - | 1768 | Synthese locale du Cas n°27 : Gestion des tickets de péage vendus à un assujetti. |
+| `wiki/cas_applicables/cas_26.md` | wiki_case | md | - | 1849 | Synthese locale du Cas n°28 : Gestion des notes de restaurant émises par un vendeur assujetti établi en France. |
+| `wiki/cas_applicables/cas_27.md` | wiki_case | md | - | 1783 | Synthese locale du Cas n°29 : Assujetti unique au sens de l'article 256 C du CGI. |
+| `wiki/cas_applicables/cas_28.md` | wiki_case | md | - | 1947 | Synthese locale du Cas n°30 : TVA déjà collectée : opération traitée initialement en e-reporting B2C avec facture a posteriori. |
+| `wiki/cas_applicables/cas_29.md` | wiki_case | md | - | 1846 | Synthese locale du Cas n°31 : Factures mixtes mentionnant une opération principale et une opération accessoire. |
+| `wiki/cas_applicables/cas_30.md` | wiki_case | md | - | 2143 | Synthese locale du Cas n°32 : Paiements mensuels. |
+| `wiki/cas_applicables/cas_31.md` | wiki_case | md | - | 1797 | Synthese locale du Cas n°33 : Opérations soumises au régime de la marge bénéficiaire. |
+| `wiki/cas_applicables/cas_32.md` | wiki_case | md | - | 2132 | Synthese locale du Cas n°34 : Encaissement partiel et annulation d'encaissement. |
+| `wiki/cas_applicables/cas_33.md` | wiki_case | md | - | 1721 | Synthese locale du Cas n°35 : Notes d'auteur. |
+| `wiki/cas_applicables/cas_34.md` | wiki_case | md | - | 1845 | Synthese locale du Cas n°36 : Opérations soumises au secret professionnel et échanges de données sensibles. |
+| `wiki/cas_applicables/cas_35.md` | wiki_case | md | - | 1816 | Synthese locale du Cas n°37 : Sociétés en participation. |
+| `wiki/cas_applicables/cas_36.md` | wiki_case | md | - | 1815 | Synthese locale du Cas n°38 : Factures avec sous-lignes et regroupements de lignes. |
+| `wiki/cas_applicables/cas_37.md` | wiki_case | md | - | 1999 | Synthese locale du Cas n°39 : Facture multi-vendeurs / intermédiaire transparent regroupant des ventes de plusieurs vendeurs. |
+| `wiki/cas_applicables/cas_38.md` | wiki_case | md | - | 2208 | Synthese locale du Cas n°40 : Paiements groupés, netting ou compensation en cas d'achat / vente croisés. |
+| `wiki/cas_applicables/cas_39.md` | wiki_case | md | - | 1767 | Synthese locale du Cas n°41 : Sociétés de barter. |
+| `wiki/cas_applicables/cas_40.md` | wiki_case | md | - | 1801 | Synthese locale du Cas n°42 : Gestion de la détaxe. |
+| `wiki/cas_applicables/cas_41.md` | wiki_case | md | - | 1906 | Synthese locale du Cas n°43 : Factures B2B internationales et e-reporting. |
+| `wiki/cas_applicables/cas_42.md` | wiki_case | md | - | 1916 | Synthese locale du Cas n°43a : Opérations triangulaires. |
+| `wiki/cas_applicables/cas_43.md` | wiki_case | md | - | 1922 | Synthese locale du Cas n°43b : Transferts de stocks assimilés à des livraisons intracommunautaires. |
+| `wiki/cas_applicables/cas_44.md` | wiki_case | md | - | 1920 | Synthese locale du Cas n°44 : Transactions avec les DROM / COM / TAAF. |

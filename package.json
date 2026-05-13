@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "node tools/serve-secure.mjs",
     "preview:vite": "vite preview --host 127.0.0.1",
+    "generate:case-hierarchies": "node tools/generate-case-hierarchies.mjs",
     "test": "npm run test:wiki && npm run test:links && npm run build",
     "test:wiki": "node tools/wiki-health.mjs",
     "test:links": "node tools/check-links.mjs"

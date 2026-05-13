@@ -166,8 +166,10 @@ function checkRawSourceSeparation() {
   const afnorFiles = walk("docs_tech/afnor", () => true);
   for (const file of afnorFiles) {
     const name = path.basename(file).toLowerCase();
+    const normalizedPath = file.toLowerCase().replaceAll("\\", "/");
+    if (name === ".ds_store") continue;
     if (name === "readme.md") continue;
-    if (!name.includes("afnor") && !name.includes("xp_z12")) errors.push(`Unexpected non-AFNOR file in docs_tech/afnor: ${file}`);
+    if (!name.includes("afnor") && !name.includes("xp_z12") && !name.includes("xp z12") && !normalizedPath.includes("xp_z12")) errors.push(`Unexpected non-AFNOR file in docs_tech/afnor: ${file}`);
     if (name.includes("cegos") || name.includes("comexa")) errors.push(`Company-specific file in AFNOR folder: ${file}`);
   }
   const specificFiles = walk("docs_specific", () => true);

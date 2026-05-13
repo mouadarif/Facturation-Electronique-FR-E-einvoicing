@@ -65,3 +65,16 @@ Append-only maintenance record. Use entries starting with `## [YYYY-MM-DD] type 
 
 - Expanded case 2 with a dedicated decoding section for `BT-*`, `BR-*`, `B/S/M` prefixes and `1/2/4` suffixes.
 - Clarified `BT-23`, `BT-9`, `BT-2`, `BT-3`, `BT-115`, code `386` and `BR-FR-08`.
+
+## [2026-05-12] synthesis | Cas applicables Annexe A v1.3 et liens wiki
+
+- Added missing case-by-case wiki pages so the application can link every case to a local synthesis.
+- Rewired AFNOR Annexe A references to the local v1.3 PDF.
+- Removed the redundant hard-coded wiki link from the Annexe A card and exposed a distinct local wiki card.
+- Checked existing case pages for the v1.3 source path and updated their source references.
+
+## [2026-05-12] synthesis | Nuances inter-cas dans les fiches wiki
+
+- Added a `Nuances avec les cas voisins` section to all 44 case wiki pages.
+- Expanded cases 5, 6 and 7 with a comparison table covering employee-paid expenses, B2C expense receipts and lodged-card purchases.
+- Kept the comparison sections focused on the decisive qualification criteria: invoice recipient, payment actor, legal buyer, PA flow and e-reporting scope.

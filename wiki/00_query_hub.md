@@ -30,7 +30,7 @@ Ce fichier est le point d'entrée stable pour interroger le corpus. Pour un cata
 - **Définitions juridiques** -> `../juridique/02_DEFINITIONS_NOTIONS_REFORME.md`
 - **Notion de chaque cas de réforme** -> `../juridique/03_NOTIONS_PAR_CAS_REFORME.md`
 - **Cas 1 : Multi-commande / livraison** -> `cas_applicables/cas_01_multi_commande_multi_livraison.md`
-- **Cas 2 : Facture déjà payée vs Acompte** -> `cas_applicables/cas_02_facture_de_ja_payee.md`
+- **Cas 2 : Facture déjà payée vs Acompte** -> `cas_applicables/cas_02_facture_deja_payee.md`
 
 ## Règle de maintenance
 

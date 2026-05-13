@@ -31,10 +31,44 @@ Le cas 7 couvre des achats réalisés avec une **carte logée** (carte d’achat
 - **Scénario Cas 7**: l’entreprise utilise une carte logée pour les déplacements. L’hôtel est payé via la carte. La facture est déposée comme déjà payée ; l’entreprise rapproche ensuite facture ↔ transaction carte ↔ relevé mensuel.
 - **Scénario Cas 5**: le collaborateur paye avec sa carte personnelle et se fait rembourser ; la nuance est alors la qualification facture au nom de l’entreprise et le traitement note de frais.
 
+## Nuances avec les cas voisins
+
+| Cas | Situation | Type de flux | Nuance cle |
+| --- | --- | --- | --- |
+| **Cas 5** | Le collaborateur paie, mais la facture est au nom de l'entreprise | **B2B e-invoicing via PA** | L'entreprise est l'acheteur juridique; le collaborateur avance seulement les frais. |
+| **Cas 6** | Le collaborateur paie, et le ticket/facture est a son nom | **B2C / e-reporting cote vendeur** | L'entreprise ne recoit pas de facture via PA; elle traite une note de frais interne. |
+| **Cas 7** | Achat avec carte logee / carte d'achat, facture au nom de l'entreprise | **B2B e-invoicing via PA** | La facture est deja payee par un moyen de paiement de l'entreprise. |
+
+### Cas 7 - carte logee / carte d'achat
+
+```text
+Facture au nom de l'entreprise
+Paiement par carte logee de l'entreprise
+```
+
+Exemple :
+
+```text
+Un salarie reserve un hotel avec une carte logee Scafruit.
+La facture est au nom de Scafruit.
+```
+
+Consequence :
+
+```text
+VENDEUR -> PA-E -> PA-R de l'entreprise
+Facture deja payee
+Net a payer = 0
+```
+
+Nuance : ce n'est pas un tiers payeur. La carte est seulement le moyen de paiement de l'acheteur.
+
+Difference centrale : cas 5 = facture entreprise + paiement collaborateur; cas 6 = facture collaborateur + paiement collaborateur; cas 7 = facture entreprise + paiement carte entreprise.
+
 ## Sources
 
 - `src/data/cases.js` : cas applicatif 7.
-- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=47` : Annexe A v1.3, cas n°7.
+- `docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=47` : Annexe A v1.3, cas n°7.
 
 ## Pages liées
 

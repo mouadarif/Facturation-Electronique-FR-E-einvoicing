@@ -33,8 +33,8 @@ export const primaryReferences = {
   },
   5: {
     title: "Cas d'usage B2B AFNOR XP Z12-014",
-    localRelativePath: "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf",
-    localUrl: "/docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=1",
+    localRelativePath: "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf",
+    localUrl: "/docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=1",
     page: 1,
     pageLabel: "Page 1",
     note: "Reference de normalisation pour l'autofacturation et les roles de parties."
@@ -153,8 +153,8 @@ export const primaryReferences = {
   },
   20: {
     title: "Cas d'usage B2B AFNOR XP Z12-014",
-    localRelativePath: "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf",
-    localUrl: "/docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf#page=1",
+    localRelativePath: "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf",
+    localUrl: "/docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf#page=1",
     page: 1,
     pageLabel: "Page 1",
     note: "Mandat tiers, roles et representation du fournisseur reel."
@@ -169,16 +169,16 @@ export const primaryReferences = {
   },
   22: {
     title: "Norme AFNOR XP Z12-012",
-    localRelativePath: "docs_tech/afnor/afnor_xp_z12_012_2025.pdf",
-    localUrl: "/docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=7",
+    localRelativePath: "docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf",
+    localUrl: "/docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf#page=7",
     page: 7,
     pageLabel: "Page 7",
     note: "Cycle de vie des statuts, refus et retours acheteur dans la partie d'application et statuts."
   },
   23: {
     title: "Norme AFNOR XP Z12-012",
-    localRelativePath: "docs_tech/afnor/afnor_xp_z12_012_2025.pdf",
-    localUrl: "/docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=7",
+    localRelativePath: "docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf",
+    localUrl: "/docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf#page=7",
     page: 7,
     pageLabel: "Page 7",
     note: "Cycle de vie, litiges et statuts metier dans la partie de description du socle."
@@ -217,16 +217,16 @@ export const primaryReferences = {
   },
   28: {
     title: "Norme AFNOR XP Z12-012",
-    localRelativePath: "docs_tech/afnor/afnor_xp_z12_012_2025.pdf",
-    localUrl: "/docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=7",
+    localRelativePath: "docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf",
+    localUrl: "/docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf#page=7",
     page: 7,
     pageLabel: "Page 7",
     note: "Statut de mise en paiement dans le cycle de vie et le socle de statuts."
   },
   29: {
     title: "Norme AFNOR XP Z12-012",
-    localRelativePath: "docs_tech/afnor/afnor_xp_z12_012_2025.pdf",
-    localUrl: "/docs_tech/afnor/afnor_xp_z12_012_2025.pdf#page=7",
+    localRelativePath: "docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf",
+    localUrl: "/docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf#page=7",
     page: 7,
     pageLabel: "Page 7",
     note: "Statut facture approuvee et rapprochements dans la partie socle et statuts."

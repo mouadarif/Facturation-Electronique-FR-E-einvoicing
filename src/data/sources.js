@@ -94,7 +94,7 @@ export const sources = [
     id: "afnor-012",
     label: "AFNOR XP Z12-012 - Formats et profils du socle",
     url: "https://www.impots.gouv.fr/factures-norme-afnor",
-    local: "docs_tech/afnor/afnor_xp_z12_012_2025.pdf",
+    local: "docs_tech/afnor/afnor_xp_z12_012_formats_profils_factures_statuts.pdf",
     type: "norme"
   },
   {
@@ -157,7 +157,7 @@ export const sources = [
     id: "afnor-014-annexe-a",
     label: "AFNOR SG2 - XP Z12-014 Annexe A cas d'usage B2B",
     url: "https://fnfe-mpe.org/ressources/",
-    local: "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b.pdf",
+    local: "docs_tech/afnor/afnor_xp_z12_014_annexe_a_cas_usage_b2b_v1_3.pdf",
     type: "norme"
   },
   {

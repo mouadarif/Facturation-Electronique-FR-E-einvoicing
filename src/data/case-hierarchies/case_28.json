@@ -1,0 +1,960 @@
+{
+  "caseId": 28,
+  "afnorCase": "Cas n°30",
+  "title": "TVA déjà collectée : opération traitée initialement en e-reporting B2C avec facture a posteriori",
+  "sourceKind": "reporting",
+  "generatedFrom": "src/data/officialAnnexData.js",
+  "summary": {
+    "rowCount": 152,
+    "sourceLabel": "Annexes e-reporting"
+  },
+  "hierarchies": [
+    {
+      "id": "reporting",
+      "label": "E-reporting JSON/XML",
+      "format": "json",
+      "root": {
+        "name": "E-reporting JSON/XML",
+        "count": 152,
+        "children": [
+          {
+            "name": "TransactionsReport",
+            "count": 112,
+            "children": [
+              {
+                "name": "Invoice",
+                "count": 96,
+                "children": [
+                  {
+                    "name": "Line",
+                    "count": 30,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-24",
+                        "label": "LIGNE DE FACTURE",
+                        "cardinality": "0..n",
+                        "row": 93
+                      },
+                      {
+                        "id": "TG-25",
+                        "label": "PERIODE DE FACTURATION D'UNE LIGNE",
+                        "cardinality": "0..1",
+                        "row": 110
+                      },
+                      {
+                        "id": "TG-26",
+                        "label": "REMISE DE LIGNE DE FACTURE",
+                        "cardinality": "0..n",
+                        "row": 113
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Delivery",
+                    "count": 10,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-17",
+                        "label": "INFORMATIONS DE LIVRAISON",
+                        "cardinality": "0..n",
+                        "row": 60
+                      },
+                      {
+                        "id": "TG-19",
+                        "label": "ADRESSE DE LIVRAISON",
+                        "cardinality": "0..1",
+                        "row": 62
+                      },
+                      {
+                        "id": "TT-103",
+                        "label": "Adresse de livraison - Ligne 1",
+                        "cardinality": "0..1",
+                        "row": 63
+                      }
+                    ]
+                  },
+                  {
+                    "name": "TaxSubTotal",
+                    "count": 8,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-23",
+                        "label": "VENTILATION DE LA TVA",
+                        "cardinality": "1..n",
+                        "row": 85
+                      },
+                      {
+                        "id": "TT-194",
+                        "label": "Catégorie de Taxe",
+                        "cardinality": "1..1",
+                        "row": 88
+                      },
+                      {
+                        "id": "TT-54",
+                        "label": "Base d'imposition du type de TVA",
+                        "cardinality": "1..1",
+                        "row": 86
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Buyer",
+                    "count": 7,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-14",
+                        "label": "ACHETEUR",
+                        "cardinality": "0..1",
+                        "row": 50
+                      },
+                      {
+                        "id": "TG-15",
+                        "label": "ADRESSE POSTALE DE L'ACHETEUR",
+                        "cardinality": "0..1",
+                        "row": 55
+                      },
+                      {
+                        "id": "TT-36",
+                        "label": "Identifiant de l'acheteur",
+                        "cardinality": "0..1",
+                        "row": 51
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Seller",
+                    "count": 7,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-12",
+                        "label": "VENDEUR",
+                        "cardinality": "1..1",
+                        "row": 43
+                      },
+                      {
+                        "id": "TG-13",
+                        "label": "ADRESSE POSTALE DU VENDEUR",
+                        "cardinality": "0..1",
+                        "row": 48
+                      },
+                      {
+                        "id": "TT-33",
+                        "label": "Identifiant du vendeur",
+                        "cardinality": "1..1",
+                        "row": 44
+                      }
+                    ]
+                  },
+                  {
+                    "name": "AllowanceCharge",
+                    "count": 6,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-45",
+                        "label": "Montant de la remise au niveau document",
+                        "cardinality": "0..1",
+                        "row": 74
+                      },
+                      {
+                        "id": "TT-46",
+                        "label": "Code de type de TVA de la remise au niveau du document",
+                        "cardinality": "0..1",
+                        "row": 75
+                      },
+                      {
+                        "id": "TT-47",
+                        "label": "Taux de TVA de la remise au niveau du document",
+                        "cardinality": "0..1",
+                        "row": 76
+                      }
+                    ]
+                  },
+                  {
+                    "name": "MonetaryTotal",
+                    "count": 4,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-22",
+                        "label": "TOTAUX DU DOCUMENT",
+                        "cardinality": "1..1",
+                        "row": 81
+                      },
+                      {
+                        "id": "TT-202",
+                        "label": "Identifiant",
+                        "cardinality": "1..1",
+                        "row": 84
+                      },
+                      {
+                        "id": "TT-51",
+                        "label": "Montant total de la facture hors TVA",
+                        "cardinality": "0..1",
+                        "row": 82
+                      }
+                    ]
+                  },
+                  {
+                    "name": "BusinessProcess",
+                    "count": 3,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-10",
+                        "label": "CONTROLE DU PROCESSUS",
+                        "cardinality": "1..1",
+                        "row": 37
+                      },
+                      {
+                        "id": "TT-28",
+                        "label": "Type de processus métier (cadre de facturation)",
+                        "cardinality": "1..1",
+                        "row": 38
+                      },
+                      {
+                        "id": "TT-29",
+                        "label": "Type de profil (e-invoicing, e-reporting, facture etc..)",
+                        "cardinality": "1..1",
+                        "row": 39
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Autres noeuds",
+                    "count": 20,
+                    "children": [],
+                    "examples": []
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-10",
+                    "label": "CONTROLE DU PROCESSUS",
+                    "cardinality": "1..1",
+                    "row": 37
+                  },
+                  {
+                    "id": "TG-11",
+                    "label": "RÉFÉRENCE À UNE FACTURE ANTÉRIEURE",
+                    "cardinality": "0..n",
+                    "row": 40
+                  },
+                  {
+                    "id": "TG-12",
+                    "label": "VENDEUR",
+                    "cardinality": "1..1",
+                    "row": 43
+                  }
+                ]
+              },
+              {
+                "name": "Transactions",
+                "count": 12,
+                "children": [
+                  {
+                    "name": "TaxSubtotal",
+                    "count": 4,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-32",
+                        "label": "Répartition TVA",
+                        "cardinality": "1..n",
+                        "row": 131
+                      },
+                      {
+                        "id": "TT-86",
+                        "label": "Taux",
+                        "cardinality": "1..1",
+                        "row": 132
+                      },
+                      {
+                        "id": "TT-87",
+                        "label": "Base imposition",
+                        "cardinality": "1..1",
+                        "row": 133
+                      }
+                    ]
+                  },
+                  {
+                    "name": "CategoryCode",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-81",
+                        "label": "Catégorie de transactions",
+                        "cardinality": "1..1",
+                        "row": 127
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Date",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-77",
+                        "label": "Date",
+                        "cardinality": "1..1",
+                        "row": 124
+                      }
+                    ]
+                  },
+                  {
+                    "name": "TaxDueDateTypeCode",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-80",
+                        "label": "Option paiement TVA",
+                        "cardinality": "0..1",
+                        "row": 126
+                      }
+                    ]
+                  },
+                  {
+                    "name": "TaxExclusiveAmount",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-82",
+                        "label": "Montant total H.T.",
+                        "cardinality": "1..1",
+                        "row": 128
+                      }
+                    ]
+                  },
+                  {
+                    "name": "TaxTotal",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-83",
+                        "label": "Montant total TVA",
+                        "cardinality": "1..1",
+                        "row": 129
+                      }
+                    ]
+                  },
+                  {
+                    "name": "TransactionsCount",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-85",
+                        "label": "Nombre transactions",
+                        "cardinality": "0..1",
+                        "row": 130
+                      }
+                    ]
+                  },
+                  {
+                    "name": "TransactionsCurrency",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-78",
+                        "label": "Code devise transactions",
+                        "cardinality": "1..1",
+                        "row": 125
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-31",
+                    "label": "Transactions",
+                    "cardinality": "0..n",
+                    "row": 123
+                  },
+                  {
+                    "id": "TG-32",
+                    "label": "Répartition TVA",
+                    "cardinality": "1..n",
+                    "row": 131
+                  },
+                  {
+                    "id": "TT-77",
+                    "label": "Date",
+                    "cardinality": "1..1",
+                    "row": 124
+                  }
+                ]
+              },
+              {
+                "name": "ReportPeriod",
+                "count": 3,
+                "children": [
+                  {
+                    "name": "EndDate",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-18",
+                        "label": "Date fin période",
+                        "cardinality": "1..1",
+                        "row": 26
+                      }
+                    ]
+                  },
+                  {
+                    "name": "StartDate",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-17",
+                        "label": "Date début période",
+                        "cardinality": "1..1",
+                        "row": 25
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-7",
+                    "label": "Periode transmission",
+                    "cardinality": "1..1",
+                    "row": 24
+                  },
+                  {
+                    "id": "TT-17",
+                    "label": "Date début période",
+                    "cardinality": "1..1",
+                    "row": 25
+                  },
+                  {
+                    "id": "TT-18",
+                    "label": "Date fin période",
+                    "cardinality": "1..1",
+                    "row": 26
+                  }
+                ]
+              }
+            ],
+            "examples": [
+              {
+                "id": "TB-2",
+                "label": "Transmission transactions",
+                "cardinality": "0..1",
+                "row": 23
+              },
+              {
+                "id": "TG-10",
+                "label": "CONTROLE DU PROCESSUS",
+                "cardinality": "1..1",
+                "row": 37
+              },
+              {
+                "id": "TG-11",
+                "label": "RÉFÉRENCE À UNE FACTURE ANTÉRIEURE",
+                "cardinality": "0..n",
+                "row": 40
+              }
+            ]
+          },
+          {
+            "name": "PaymentsReport",
+            "count": 20,
+            "children": [
+              {
+                "name": "Invoice",
+                "count": 9,
+                "children": [
+                  {
+                    "name": "Payment",
+                    "count": 6,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-35",
+                        "label": "Paiement",
+                        "cardinality": "1..1",
+                        "row": 142
+                      },
+                      {
+                        "id": "TG-36",
+                        "label": "Répartition par taux",
+                        "cardinality": "1..n",
+                        "row": 144
+                      },
+                      {
+                        "id": "TT-92",
+                        "label": "Date paiement",
+                        "cardinality": "1..1",
+                        "row": 143
+                      }
+                    ]
+                  },
+                  {
+                    "name": "InvoiceID",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-91",
+                        "label": "Numero de facture",
+                        "cardinality": "1..1",
+                        "row": 140
+                      }
+                    ]
+                  },
+                  {
+                    "name": "IssueDate",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-102",
+                        "label": "Date de la facture",
+                        "cardinality": "1..1",
+                        "row": 141
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-34",
+                    "label": "Facture",
+                    "cardinality": "0..n",
+                    "row": 139
+                  },
+                  {
+                    "id": "TG-35",
+                    "label": "Paiement",
+                    "cardinality": "1..1",
+                    "row": 142
+                  },
+                  {
+                    "id": "TG-36",
+                    "label": "Répartition par taux",
+                    "cardinality": "1..n",
+                    "row": 144
+                  }
+                ]
+              },
+              {
+                "name": "Transactions",
+                "count": 7,
+                "children": [
+                  {
+                    "name": "Payment",
+                    "count": 6,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-38",
+                        "label": "Paiement",
+                        "cardinality": "1..1",
+                        "row": 149
+                      },
+                      {
+                        "id": "TG-39",
+                        "label": "Répartition par taux",
+                        "cardinality": "1..n",
+                        "row": 151
+                      },
+                      {
+                        "id": "TT-96",
+                        "label": "Date paiement",
+                        "cardinality": "1..1",
+                        "row": 150
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-37",
+                    "label": "Transactions",
+                    "cardinality": "0..n",
+                    "row": 148
+                  },
+                  {
+                    "id": "TG-38",
+                    "label": "Paiement",
+                    "cardinality": "1..1",
+                    "row": 149
+                  },
+                  {
+                    "id": "TG-39",
+                    "label": "Répartition par taux",
+                    "cardinality": "1..n",
+                    "row": 151
+                  }
+                ]
+              },
+              {
+                "name": "ReportPeriod",
+                "count": 3,
+                "children": [
+                  {
+                    "name": "EndDate",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-90",
+                        "label": "Date fin période",
+                        "cardinality": "1..1",
+                        "row": 138
+                      }
+                    ]
+                  },
+                  {
+                    "name": "StartDate",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-89",
+                        "label": "Date début période",
+                        "cardinality": "1..1",
+                        "row": 137
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-33",
+                    "label": "Période transmission",
+                    "cardinality": "1..1",
+                    "row": 136
+                  },
+                  {
+                    "id": "TT-89",
+                    "label": "Date début période",
+                    "cardinality": "1..1",
+                    "row": 137
+                  },
+                  {
+                    "id": "TT-90",
+                    "label": "Date fin période",
+                    "cardinality": "1..1",
+                    "row": 138
+                  }
+                ]
+              }
+            ],
+            "examples": [
+              {
+                "id": "TB-3",
+                "label": "Transmission paiements",
+                "cardinality": "0..1",
+                "row": 135
+              },
+              {
+                "id": "TG-33",
+                "label": "Période transmission",
+                "cardinality": "1..1",
+                "row": 136
+              },
+              {
+                "id": "TG-34",
+                "label": "Facture",
+                "cardinality": "0..n",
+                "row": 139
+              }
+            ]
+          },
+          {
+            "name": "ReportDocument",
+            "count": 20,
+            "children": [
+              {
+                "name": "Issuer",
+                "count": 7,
+                "children": [
+                  {
+                    "name": "Id",
+                    "count": 2,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-12",
+                        "label": "Type Id déclarant",
+                        "cardinality": "1..1",
+                        "row": 18
+                      },
+                      {
+                        "id": "TT-13",
+                        "label": "Id déclarant",
+                        "cardinality": "1..1",
+                        "row": 17
+                      }
+                    ]
+                  },
+                  {
+                    "name": "URIUniversalCommunication",
+                    "count": 2,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-6",
+                        "label": "Adresse électronique émetteur",
+                        "cardinality": "0..1",
+                        "row": 21
+                      },
+                      {
+                        "id": "TT-16",
+                        "label": "Adresse électronique (réseau CEF)",
+                        "cardinality": "1..1",
+                        "row": 22
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Name",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-14",
+                        "label": "Raison sociale",
+                        "cardinality": "1..1",
+                        "row": 19
+                      }
+                    ]
+                  },
+                  {
+                    "name": "RoleCode",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-15",
+                        "label": "Code rôle",
+                        "cardinality": "1..1",
+                        "row": 20
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-5",
+                    "label": "Déclarant",
+                    "cardinality": "1..1",
+                    "row": 16
+                  },
+                  {
+                    "id": "TG-6",
+                    "label": "Adresse électronique émetteur",
+                    "cardinality": "0..1",
+                    "row": 21
+                  },
+                  {
+                    "id": "TT-12",
+                    "label": "Type Id déclarant",
+                    "cardinality": "1..1",
+                    "row": 18
+                  }
+                ]
+              },
+              {
+                "name": "Sender",
+                "count": 7,
+                "children": [
+                  {
+                    "name": "Id",
+                    "count": 2,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-7",
+                        "label": "Type Id émetteur",
+                        "cardinality": "1..1",
+                        "row": 11
+                      },
+                      {
+                        "id": "TT-8",
+                        "label": "Id émetteur",
+                        "cardinality": "1..1",
+                        "row": 10
+                      }
+                    ]
+                  },
+                  {
+                    "name": "URIUniversalCommunication",
+                    "count": 2,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TG-4",
+                        "label": "Adresse électronique émetteur",
+                        "cardinality": "0..1",
+                        "row": 14
+                      },
+                      {
+                        "id": "TT-11",
+                        "label": "Adresse électronique (réseau CEF)",
+                        "cardinality": "1..1",
+                        "row": 15
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Name",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-9",
+                        "label": "Raison sociale",
+                        "cardinality": "1..1",
+                        "row": 12
+                      }
+                    ]
+                  },
+                  {
+                    "name": "RoleCode",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-10",
+                        "label": "Code rôle",
+                        "cardinality": "1..1",
+                        "row": 13
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-3",
+                    "label": "Emetteur document",
+                    "cardinality": "1..1",
+                    "row": 9
+                  },
+                  {
+                    "id": "TG-4",
+                    "label": "Adresse électronique émetteur",
+                    "cardinality": "0..1",
+                    "row": 14
+                  },
+                  {
+                    "id": "TT-10",
+                    "label": "Code rôle",
+                    "cardinality": "1..1",
+                    "row": 13
+                  }
+                ]
+              },
+              {
+                "name": "IssueDateTime",
+                "count": 2,
+                "children": [
+                  {
+                    "name": "DateTimeString",
+                    "count": 1,
+                    "children": [],
+                    "examples": [
+                      {
+                        "id": "TT-3",
+                        "label": "Date-Heure",
+                        "cardinality": "1..1",
+                        "row": 7
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "id": "TG-1",
+                    "label": "Horodatage",
+                    "cardinality": "1..1",
+                    "row": 6
+                  },
+                  {
+                    "id": "TT-3",
+                    "label": "Date-Heure",
+                    "cardinality": "1..1",
+                    "row": 7
+                  }
+                ]
+              },
+              {
+                "name": "Id",
+                "count": 1,
+                "children": [],
+                "examples": [
+                  {
+                    "id": "TT-1",
+                    "label": "Id transmission",
+                    "cardinality": "1..1",
+                    "row": 4
+                  }
+                ]
+              },
+              {
+                "name": "Name",
+                "count": 1,
+                "children": [],
+                "examples": [
+                  {
+                    "id": "TT-2",
+                    "label": "Nom document",
+                    "cardinality": "0..1",
+                    "row": 5
+                  }
+                ]
+              },
+              {
+                "name": "TypeCode",
+                "count": 1,
+                "children": [],
+                "examples": [
+                  {
+                    "id": "TT-4",
+                    "label": "Code type transmission",
+                    "cardinality": "1..1",
+                    "row": 8
+                  }
+                ]
+              }
+            ],
+            "examples": [
+              {
+                "id": "TB-1",
+                "label": "Document transmission",
+                "cardinality": "1..1",
+                "row": 3
+              },
+              {
+                "id": "TG-1",
+                "label": "Horodatage",
+                "cardinality": "1..1",
+                "row": 6
+              },
+              {
+                "id": "TG-3",
+                "label": "Emetteur document",
+                "cardinality": "1..1",
+                "row": 9
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
